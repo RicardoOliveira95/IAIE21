@@ -6,7 +6,7 @@ const dirname='C:/Users/Utilizador/Desktop/UM/PW/m_temp'
 
 app.get('/', (req, res) => {
 	console.log("Here")
-	res.sendFile(dirname+'/inde.html')
+	res.sendFile(__dirname+'/inde.html')
 });
 
 app.listen(8080);
