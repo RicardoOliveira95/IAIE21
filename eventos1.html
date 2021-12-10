@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-lang="pt-BR" crm-lang="pt-BR" crm-lcid="1046" 
+	same-site-mode="None" >
+<head>
+		<meta charset="utf-8" /><meta name="viewport" content="width=device-width,&#32;initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script type="text/javascript">
+				
+</script>
+	<title>
+	
+		Consultar eventos
+</title>
+		<link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">	
+		<script src="/_resources/getresourcemanager?lang=pt-BR"></script>
+	
+	<script type="text/javascript">
+		// Refresh all powerBI Iframes on Login in one Iframe
+		window.addEventListener('message', function (event) {
+			if (event && event.data && event.data == 'refreshPowerBI') {
+				$("iframe.powerbi").each(function () {
+					this.src = this.src;
+				});
+			}
+		});
+
+		// Fix for incorrect viewport width setting in IE 10 on Windows Phone 8.
+		if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+			var msViewportStyle = document.createElement("style");
+			msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));
+			document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+		}
+	</script>
+	
+		
+		<link href="./css/bootstrap.min.css" rel="stylesheet" />
+
+		<link href="./css/glyphicons-font-awesome-migrate.min.css" rel="stylesheet"/>
+
+		<link href="https://content.powerapps.com/resource/powerappsportal/dist/preform.bundle-39edee5cb6.css" rel="stylesheet" />
+
+
+		
+		
+        <!--[if lt IE 9]>
+                <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        
+        <!--[if lt IE 10]>
+                <script src="~/js/formdata.js"></script>
+            <![endif]-->
+        
+            
+        
+        <link href="./css/theme.css" rel="stylesheet" />
+<link href="./css/portalbasictheme.css" rel="stylesheet" />
+
+        
+        
+        
+	
+		</head>
+<body data-sitemap-state="/"
+	data-dateformat="dd/MM/yyyy"
+	data-timeformat="HH:mm"
+	data-datetimeformat="dd/MM/yyyy HH:mm"
+	data-app-path="/"
+	data-ckeditor-basepath="/js/BaseHtmlContentDesigner/Libs/msdyncrm_/libs/ckeditor/"
+	data-case-deflection-url="/_services/search/b0cc7f4d-c8b0-4d38-addf-14b28c9ce182">
+
+	
+		<script type="text/javascript">
+		window["Microsoft"] = window["Microsoft"] || {};
+		window["Microsoft"].Dynamic365 = {
+			Portal: {
+				
+				User: {
+					contactId: '',
+						userName: ''
+				},
+				
+						version: '9.3.7.21',
+						type: 'CDSStarterPortal',
+						id: '3bc25486-1934-4f38-a5be-96c91ae4963b'
+			}
+		}
+	</script>
+
+	
+		
+
+<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="skip-to-content"><a href="#mainContent">Pular para o conteúdo principal</a></div><div class="container">
+        <div class="navbar-header">
+
+            <!--div class="visible-xs-block">
+              <div class="xrm-editable-html&#32;xrm-attribute" data-languageContext="português&#32;(Brasil)"><div class="xrm-attribute-value"><a href="~/"><img src="/Logo.png" alt="Contoso Limited" style="width: 32px; height: 32px;"><span style="position: relative; top: 2px; margin-left: 9px;">Contoso Ltd</span></a></div></div>
+            </div-->
+            <div class="visible-sm-block visible-md-block visible-lg-block visible-xs-block navbar-brand">
+                <div class="xrm-editable-html&#32;xrm-attribute" data-languageContext="português&#32;(Brasil)"><div class="xrm-attribute-value"><a href="./"><img src="./static/Logo.png" alt="Contoso Limited" style="width: 32px; height: 32px;"><span style="position: relative; top: 2px; margin-left: 9px;">Contoso Ltd</span></a></div></div>
+            </div>
+            <button type="button" class="navbar-toggle collapsed" title="Alternar navega&#231;&#227;o" data-toggle="collapse" data-target="#navbar" aria-expanded="false" onclick="setHeight();">
+                <span class="sr-only">Alternar navega&#231;&#227;o</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            
+            
+            <div class="navbar-right menu-bar " data-weblinks-maxdepth="2">
+                <ul class="nav navbar-nav weblinks" role="menubar">
+                    
+                    
+                    
+                    
+                    
+                    <li role="none" class="weblink ">
+                        <a role="menuitem" aria-label="Resid&#234;ncia" href="./" title="Resid&#234;ncia" >
+                            Resid&#234;ncia
+                        </a>
+                        
+                    </li>
+                    
+                    
+                    <li class="divider-vertical" aria-hidden="true"></li>
+                    
+                    
+                    
+                    
+                    <li role="none" class="weblink  dropdown">
+                        <a role="menuitem" aria-label="Servi&#231;os" href="#" class="dropdown-toggle" data-toggle="dropdown" title="Servi&#231;os" >
+                            Servi&#231;os
+                            <span class="caret"></span>
+                        </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                            
+                            <li role="none">
+                                <a role="menuitem" aria-label="Servi&#231;os" href="./service"   title="Servi&#231;os" >Servi&#231;os</a>
+                            </li>
+                            <div class="divider"></div>
+                            
+                            
+                            <li role="none">
+                                <a role="menuitem" aria-label="Produto A (exemplo)" href="./page1"   title="Produto A (exemplo)" >
+                                    Produto A (exemplo)
+                                </a>
+                            </li>
+                            
+                            <li role="none">
+                                <a role="menuitem" aria-label="Produto B (exemplo)" href="./page2"   title="Produto B (exemplo)" >
+                                    Produto B (exemplo)
+                                </a>
+                            </li>
+                            <li role="none" class="weblink">
+                        <a role="menuitem" arial-label="Consultar eventos" href="./evento" title="Consultar eventos">
+                            Consultar Eventos
+                        </a>
+                    </li>
+
+                    <li role="none" class="weblink">
+                        <a role="menuitem" arial-label="Registar evento" href="./regEvento" title="Registar evento">
+                            Registar Evento
+                        </a>
+                    </li>
+
+                    <li role="none" class="weblink">
+                        <a role="menuitem" arial-label="Registar evento" href="./bilhetes" title="Registar evento">
+                            Os seus bilhetes
+                        </a>
+                    </li>
+                        </ul>
+                        
+                    </li>
+                    
+                    
+                    <li class="divider-vertical" aria-hidden="true"></li>
+                    
+                    
+                    
+                    
+                    <li role="none" class="weblink ">
+                        <a role="menuitem" aria-label="Sobre n&#243;s" href="./about" title="Sobre n&#243;s" >
+                            Sobre n&#243;s
+                        </a>
+                        
+                    </li>
+                    
+                    <li role="none" class="weblink">
+                        <a role="menuitem" arial-label="Consultar eventos" href="./evento" title="Consultar eventos">
+                            Consultar Eventos
+                        </a>
+                    </li>
+
+                    <li role="none" class="weblink">
+                        <a role="menuitem" arial-label="Registar evento" href="./regEvento" title="Registar evento">
+                            Registar Evento
+                        </a>
+                    </li>
+                    
+                    <li class="divider-vertical" aria-hidden="true"></li>
+                    <li role="none" class="dropdown">
+                        <a id="search" class="navbar-icon" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Pesquisar">
+                            <span class="glyphicon glyphicon-search"></a>
+                        </a>
+                        <div class="dropdown-menu dropdown-search">
+                            
+
+
+
+
+
+<form method="GET" action="/search/" role="search" class="form-search">
+    <div class="input-group">
+
+        
+
+        <label for="q" class="sr-only">
+            Pesquisar
+        </label>
+        <input type="text" class="form-control" id="q" name="q"
+               placeholder="Pesquisar"
+               value=""
+               title="Pesquisar">
+        <div class="input-group-btn">
+            <button type="submit" class="btn btn-primary"
+                    title="Pesquisar"
+                    aria-label="Pesquisar">
+                <span class="fa fa-search" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</form>
+
+                        </div>
+                    </li>
+                    
+                    <li class="divider-vertical" aria-hidden="true"></li>
+                    
+                    
+                    <li role="none">
+                        <a role="menuitem" aria-label="Entrar" href="./login">
+                            Entrar
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<h1><b>Lista de Eventos</b></h1>
+	<br>
+
+	<div class="table-responsive">
+		<table id="tabServ" class="table">
+	</div>
+
+	<script type="text/javascript">
+		var servicos;
+		console.log("HEREE");
+		window.onload=()=>{
+			console.log("HERE")
+			const tabServ=document.getElementById("tabServ")
+
+			const renderServs=async()=>{
+				console.log("FUNCTION")
+				let strHtml=`
+				<table id="tabServ" class="rtable">
+  			<thead>
+    			<tr>
+      				<th>ID</th>
+      				<th>Tipo</th>
+ 					<th>Descricao</th>
+ 					<th>Accao</th>
+     			</tr>
+    		</thead><tbody>
+    		`
+   		const response=await fetch('http://localhost:8080/eventos');
+
+   		eventos = await response.json();
+
+   		for(const evento of eventos){
+   			console.log("LOOP")
+   				strHtml+=`<tr><td>${evento.idEvento}</td>
+   				<td>${evento.tipo}</td>
+   				<td>${evento.descricao}</td>
+   				<td><button onclick="deleteServico(${evento.idEvento})">DELETE</button></td></tr>`
+			}
+			strHtml+=`<tbody></table><br><footer role="contentinfo" class="footer">
+  <div class="footer-bottom hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-12 col-xs-12 text-left">
+          <div class="xrm-editable-html&#32;xrm-attribute" data-languageContext="português&#32;(Brasil)"><div class="xrm-attribute-value"><p><span>Copyright © </span>2021<span>. Todos os direitos reservados.</span></p></div></div>
+        </div>
+        <div class="frenchAccessibilityLink">
+          <a id="frenchAccesssibleLink" target="_blank" href="" title=""></a>
+        </div>
+
+      </div>
+    </div>
+</footer>`
+			tabServ.innerHTML=strHtml
+   		}
+
+   		renderServs();
+		}
+
+		const deleteServico=async(id)=>{
+			const response=await fetch(`http://localhost:8080/evento/${id}`,{method: "DELETE"});
+		}
+	</script>
+	
+	<script src="https://content.powerapps.com/resource/powerappsportal/dist/postpreform.bundle-0147112061.js"></script>
+
+	<script src="https://content.powerapps.com/resource/powerappsportal/dist/app.bundle-4df547691e.js"></script>
+
+	<script src="https://content.powerapps.com/resource/powerappsportal/dist/default-1046.bundle-f3545c14ca.js"></script>
+
+	
+	
+	
+	<script>
+		//this event will update the title of the page based on active breadcrumb
+		$('.breadcrumb').ready(function () {
+			if ($('.breadcrumb').is(':visible')) {
+				document.querySelector('title').innerHTML = ($('.breadcrumb > li.active').text() + "&nbsp;· Portal do Iniciante");
+			}
+		});
+
+		function GoToNewEditor() {
+			var editCmsUrlSegment = "EditInCms";
+			var currentUrl = window.location.href;
+			if (currentUrl.indexOf('?') > -1) {
+				var urlSegments = currentUrl.split("?");
+				window.location.href = window.location.origin + '/' + editCmsUrlSegment + window.location.pathname + '?' + urlSegments[1];
+			}
+			else {
+				window.location.href = window.location.origin + '/' + editCmsUrlSegment + window.location.pathname;
+			}
+		}
+	</script>
+	
+		
+	
+</body>
+</html>
