@@ -20,7 +20,7 @@ var moloni=new Moloni({
 	username: '',
 	password= ''
 })
-/*const permittedLinker = ['localhost', '127.0.0.1', 'http://pensbin21.freecluster.eu', 'http://pnsbin2.tk', process.env.IP]; // who can link here?
+const permittedLinker = ['localhost', '127.0.0.1', 'https://isae21.herokuapp.com/', process.env.IP]; // who can link here?
 app.use(function(req, res, next) {
   let i = 0,
     notFound = 1,
@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
   else {
     next(); // access is permitted, go to the next step in the ordinary routing
   }
-});*/
+});
 
 app.use(session({
 	secret: 'pnsbn',
