@@ -1,6 +1,9 @@
 {
   "name": "PW",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.13.0"
+  },
   "description": "",
   "main": "main.js",
   "directories": {
