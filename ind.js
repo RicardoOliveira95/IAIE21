@@ -13,6 +13,9 @@ var Moloni=require('moloni');
 app.use('/css',express.static('css'));
 app.use('/static',express.static('static'));
 
+app.use(cors({
+  exposedHeaders: ['Location'],
+}));
 
 var moloni=new Moloni({
 	client_id: '',
