@@ -18,12 +18,12 @@ app.use(cors({
   exposedHeaders: ['Location'],
 }));
 
-var moloni=new Moloni({
+/*var moloni=new Moloni({
 	client_id: '',
 	client_secret: '',
 	username: '',
 	password= ''
-});
+});*/
 
 /*const permittedLinker = ['localhost', '127.0.0.1', 'https://isae21.herokuapp.com/', process.env.IP]; // who can link here?
 app.use(function(req, res, next) {
