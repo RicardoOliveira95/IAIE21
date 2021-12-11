@@ -1,0 +1,42 @@
+{
+  "name": "isae21",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.13.0"
+  },
+  "description": "",
+  "main": "ind.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node ind.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sap/hana-client": "2.9.28",
+    "@sap/hdi": "4.1.0",
+    "@sap/xsenv": "3.1.0",
+    "async": "3.1.0",
+    "bcrypt": "^5.0.0",
+    "bcrypt-nodejs": "0.0.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "10.0.0",
+    "express": "^4.17.1",
+    "express-sanitizer": "^1.0.5",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.8.1",
+    "handlebars": "4.7.7",
+    "micromatch": "4.0.4",
+    "moloni": "^0.0.6",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.3.5"
+  }
+}
