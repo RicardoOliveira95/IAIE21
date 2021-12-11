@@ -3,6 +3,7 @@ const bp = require("body-parser");
 const session = require("express-session")
 const bd = require("./config/config.js");
 const app = express();
+const port = process.env.PORT;
 app.use(express.static('/css'))
 app.use(bp.json())
 app.use(bp.urlencoded({extended: true}))
@@ -22,8 +23,9 @@ var moloni=new Moloni({
 	client_secret: '',
 	username: '',
 	password= ''
-})
-const permittedLinker = ['localhost', '127.0.0.1', 'https://isae21.herokuapp.com/', process.env.IP]; // who can link here?
+});
+
+/*const permittedLinker = ['localhost', '127.0.0.1', 'https://isae21.herokuapp.com/', process.env.IP]; // who can link here?
 app.use(function(req, res, next) {
   let i = 0,
     notFound = 1,
@@ -44,7 +46,7 @@ app.use(function(req, res, next) {
   else {
     next(); // access is permitted, go to the next step in the ordinary routing
   }
-});
+});*/
 
 app.use(session({
 	secret: 'pnsbn',
@@ -199,4 +201,5 @@ app.get('/about',(req,res)=>{
 	res.sendFile(__dirname+'/about.html');
 })
 
-app.listen(8080);
+app.listen(port, ()=> console.log('Running at port ' + port));
+//app.listen(8080);
