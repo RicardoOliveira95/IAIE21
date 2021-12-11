@@ -5,12 +5,12 @@
     "node": "16.13.0"
   },
   "description": "",
-  "main": "inde.js",
+  "main": "ind.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "start": "node inde.js"
+    "start": "node ind.js"
   },
   "keywords": [],
   "author": "",
