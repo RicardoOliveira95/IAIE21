@@ -5,15 +5,16 @@ var cors = require('cors');
 const bd = require("./config/config.js");
 const app = express();
 const port = process.env.PORT;
-app.use(express.static('/css'))
+app.use(express.static('./FrontEnd/css'))
 app.use(bp.json())
 app.use(bp.urlencoded({extended: true}))
 //app.use('/assets', express.static('assets'))
 //const dirname='C:/Users/Utilizador/Desktop/UM/PW/m_temp1'
 var Moloni=require('moloni');
 //GET CSS's and IMG's
-app.use('/css',express.static('css'));
-app.use('/static',express.static('static'));
+app.use('./FrontEnd/css',express.static('css'));
+app.use('./FrontEnd/static',express.static('static'));
+
 
 app.use(cors({
   exposedHeaders: ['Location'],
@@ -71,11 +72,11 @@ app.use(function(req,res,next){
 })
 
 app.get('/', (req, res) => {
-	res.sendFile(__dirname+'/inde.html')
+	res.sendFile(__dirname+'/FrontEnd/inde.html')
 });
 
 app.get('/login',(req,res)=>{
-	res.sendFile(__dirname+'/login.html')
+	res.sendFile(__dirname+'/FrontEnd/login.html')
 });
 
 app.post('/login1',(req,res)=>{
@@ -100,7 +101,7 @@ app.post('/login',(req,res)=>{
 		if(results.length>0){
 			req.session.loggedIn=true;
 			console.log("AUTH!",req.session.loggedIn);
-			res.sendFile(dirname+'/tecnicos.html')
+			res.sendFile(dirname+'/FrontEnd/tecnicos.html')
 		}else{
 			res.send('Incorrect name and password.')
 		}
@@ -113,7 +114,7 @@ app.post('/login',(req,res)=>{
 });
 
 app.get('/bilhetes',(req,res)=>{
-	res.sendFile(__dirname+'/bilhetes.html');
+	res.sendFile(__dirname+'/FrontEnd/bilhetes.html');
 });
 
 app.get('/bilhete',(req,res)=>{
@@ -202,5 +203,5 @@ app.get('/about',(req,res)=>{
 	res.sendFile(__dirname+'/about.html');
 })
 
-app.listen(port, ()=> console.log('Running at port ' + port));
-//app.listen(8080);
+//app.listen(port, ()=> console.log('Running at port ' + port));
+app.listen(8080);
