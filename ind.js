@@ -166,7 +166,7 @@ app.post('/bilhete', (req, res) => {
 //CONTROLLERS
 app.get('/evento',(req,res)=>{
 	console.log("GET")
-	res.sendFile(__dirname+"FrontEnd/eventos1.html");
+	res.sendFile(__dirname+"/FrontEnd/eventos1.html");
 });
 
 app.get('/eventos',(req,res)=>{
@@ -175,7 +175,7 @@ app.get('/eventos',(req,res)=>{
 });
 
 app.get('/regEvento',(req,res)=>{
-	res.sendFile(__dirname+"FrontEnd/regEventos1.html");
+	res.sendFile(__dirname+"/FrontEnd/regEventos1.html");
 });
 
 app.post('/evento', (req, res) => {
@@ -221,7 +221,7 @@ app.put('/evento/:id',(req,res)=>{
 })
 
 app.get('/about',(req,res)=>{
-	res.sendFile(__dirname+'FrontEnd/about.html');
+	res.sendFile(__dirname+'/FrontEnd/about.html');
 })
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
