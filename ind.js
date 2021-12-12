@@ -35,18 +35,17 @@ app.use('/Homehero.png', express.static(__dirname + '/FrontEnd/static/Homehero.p
 app.use('/Logo.png', express.static(__dirname + '/FrontEnd/static/Logo.png'))
 app.use('/Product A.png', express.static(__dirname + '/FrontEnd/static/Product A.png'))
 app.use('/Product B.png', express.static(__dirname + '/FrontEnd/static/Product B.png'))
-/*
 
-app.use(cors({
+var moloni=new Moloni({
+	client_id: 'iaiepl7g1',
+	client_secret: '7d1bd1209a8d661c1d56c8e52d952f862e4ecc30',
+	username: 'jcmoliveirapt@gmail.com',
+	password: 'iaiepl7g1'
+});
+
+/*app.use(cors({
   exposedHeaders: ['Location'],
 }));
-
-/*var moloni=new Moloni({
-	client_id: '',
-	client_secret: '',
-	username: '',
-	password= ''
-});*/
 
 /*const permittedLinker = ['localhost', '127.0.0.1', 'https://isae21.herokuapp.com/', process.env.IP]; // who can link here?
 app.use(function(req, res, next) {
