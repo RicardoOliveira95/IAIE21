@@ -5,16 +5,37 @@ var cors = require('cors');
 const bd = require("./config/config.js");
 const app = express();
 const port = process.env.PORT;
-app.use(express.static('./FrontEnd/css'))
+app.use(express.static('./FrontEnd'))
 app.use(bp.json())
 app.use(bp.urlencoded({extended: true}))
 //app.use('/assets', express.static('assets'))
 //const dirname='C:/Users/Utilizador/Desktop/UM/PW/m_temp1'
 var Moloni=require('moloni');
 //GET CSS's and IMG's
-app.use('./FrontEnd/css',express.static('css'));
-app.use('./FrontEnd/static',express.static('static'));
+//app.use('/FrontEnd/css',express.static('css'));
+//app.use('/FrontEnd/static',express.static('static'));
 
+console.log(__dirname)
+
+//CSS...
+app.use('/account.css', express.static(__dirname + '/FrontEnd/css/account.css'))
+app.use('/bootstrap.min.css', express.static(__dirname + '/FrontEnd/css/bootstrap.min.css'))
+app.use('/form.css', express.static(__dirname + '/FrontEnd/css/form.css'))
+app.use('/glyphicons-font-awesome-migrate.css', express.static(__dirname + '/FrontEnd/css/glyphicons-font-awesome-migrate.min.css'))
+app.use('/portalbasictheme.css', express.static(__dirname + '/FrontEnd/css/portalbasictheme.css'))
+app.use('/tbl.css', express.static(__dirname + '/FrontEnd/css/tbl.css'))
+app.use('/theme.css', express.static(__dirname + '/FrontEnd/css/theme.css'))
+//IMGs
+app.use('/About Us.png', express.static(__dirname + '/FrontEnd/static/About Us.png'))
+app.use('/Analytics.png', express.static(__dirname + '/FrontEnd/static/Analytics.png'))
+app.use('/Diagnose.png', express.static(__dirname + '/FrontEnd/static/Diagnose.png'))
+app.use('/Edit.png', express.static(__dirname + '/FrontEnd/static/Edit.png'))
+app.use('/Growth.png', express.static(__dirname + '/FrontEnd/static/Growth.png'))
+app.use('/Homehero.png', express.static(__dirname + '/FrontEnd/static/Homehero.png'))
+app.use('/Logo.png', express.static(__dirname + '/FrontEnd/static/Logo.png'))
+app.use('/Product A.png', express.static(__dirname + '/FrontEnd/static/Product A.png'))
+app.use('/Product B.png', express.static(__dirname + '/FrontEnd/static/Product B.png'))
+/*
 
 app.use(cors({
   exposedHeaders: ['Location'],
@@ -145,7 +166,7 @@ app.post('/bilhete', (req, res) => {
 //CONTROLLERS
 app.get('/evento',(req,res)=>{
 	console.log("GET")
-	res.sendFile(__dirname+"/eventos1.html");
+	res.sendFile(__dirname+"FrontEnd/eventos1.html");
 });
 
 app.get('/eventos',(req,res)=>{
@@ -154,7 +175,7 @@ app.get('/eventos',(req,res)=>{
 });
 
 app.get('/regEvento',(req,res)=>{
-	res.sendFile(__dirname+"/regEventos1.html");
+	res.sendFile(__dirname+"FrontEnd/regEventos1.html");
 });
 
 app.post('/evento', (req, res) => {
@@ -200,8 +221,9 @@ app.put('/evento/:id',(req,res)=>{
 })
 
 app.get('/about',(req,res)=>{
-	res.sendFile(__dirname+'/about.html');
+	res.sendFile(__dirname+'FrontEnd/about.html');
 })
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
+
