@@ -224,6 +224,6 @@ app.get('/about',(req,res)=>{
 	res.sendFile(__dirname+'/FrontEnd/about.html');
 })
 
-//app.listen(port, ()=> console.log('Running at port ' + port));
-app.listen(8080);
+app.listen(port, ()=> console.log('Running at port ' + port));
+//app.listen(8080);
 
