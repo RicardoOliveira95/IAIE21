@@ -40,7 +40,29 @@ var moloni=new Moloni({
 	client_id: 'iaiepl7g1',
 	client_secret: '7d1bd1209a8d661c1d56c8e52d952f862e4ecc30',
 	username: 'jcmoliveirapt@gmail.com',
-	password: 'iaiepl7g1'
+	password: 'iaiepl7g1',
+	sandbox: true
+});
+//MOLONI FUNCTIONS
+moloni.users('getMe', function (error, result) {
+	if (error)
+		return console.error(error);
+
+	console.log(result);
+});
+
+var params = {
+	"company_id":"0","vat":"1","number":"45","name":"Ze","language_id":"2","address":"Braga","zip-code":"4710-441","city":"Braga","country_id":"1","email":"ze@mail.pt"
+	,"website":"www.site.com","phone":"91999999","fax":"ns","contact_name":"Jose","contact_email":"mail2.com","contact_phone":"253999999","notes":"notas",
+	"salesman_id":"1","maturity_date_id":"1","payment_day":"30/12/2021","discount":"10","credit_limit":"100","qty_copies_document":"2",
+	"payment_method_id":"1","delivery_method_id":"2","field_notes":"notas de campo"
+};
+
+moloni.customers('count', params, function (error, result) {
+	if (error)
+		return console.error(error);
+
+	console.log(result);
 });
 
 /*app.use(cors({
