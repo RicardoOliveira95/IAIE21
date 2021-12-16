@@ -2,11 +2,23 @@ console.log("CONTROLLER")
 
 const app = express();
 
+/*
 app.get('/eventos',(req,res)=>{
 	let sql='SELECT * from Evento'
 	bd.execSQLQuery(sql,res);
 });
-
+*/
+function read(req, res) {
+    const query = connect.con.query('SELECT * FROM Evento',
+        function (err, rows, fields) {
+            console.log(query.sql);
+            if(err){
+                console.log(err);
+            } else{
+                    res.send(rows);
+            }
+        });
+};
 
 app.post('/evento', (req, res) => {
 	var data=req.body.data_inicio;
@@ -50,3 +62,6 @@ app.put('/evento/:id',(req,res)=>{
 	});
 })
 
+module.exports = {
+    read: read
+}

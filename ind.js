@@ -153,3 +153,9 @@ app.post('/login',(req,res)=>{
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
 
+module.exports = app;
+
+const index = require('./Back-End/controllers/eventController');
+app.use('/', index);
+module.exports = app;
+
