@@ -17,6 +17,16 @@ var Moloni=require('moloni');
 
 console.log(__dirname)
 
+
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
+    res.header("Access-Control-Allow-Headers", "append,delete,entries,foreach,get,has,keys,set,values,Authorization, Access-Control-Allow-Origin, Access-Control-Allow-Credentials, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+  });
+
 //CSS...
 app.use('/account.css', express.static(__dirname + '/FrontEnd/css/account.css'))
 app.use('/bootstrap.min.css', express.static(__dirname + '/FrontEnd/css/bootstrap.min.css'))
@@ -35,6 +45,7 @@ app.use('/Homehero.png', express.static(__dirname + '/FrontEnd/static/Homehero.p
 app.use('/Logo.png', express.static(__dirname + '/FrontEnd/static/Logo.png'))
 app.use('/Product A.png', express.static(__dirname + '/FrontEnd/static/Product A.png'))
 app.use('/Product B.png', express.static(__dirname + '/FrontEnd/static/Product B.png'))
+
 
 var moloni=new Moloni({
 	client_id: 'iaiepl7g1',
@@ -113,24 +124,7 @@ app.use(function(req,res,next){
 	next()
 })
 
-app.get('/', (req, res) => {
-	res.sendFile(__dirname+'/FrontEnd/inde.html')
-});
-
-app.get('/login',(req,res)=>{
-	res.sendFile(__dirname+'/FrontEnd/login.html')
-});
-
-app.post('/login1',(req,res)=>{
-	var name=req.body.nome
-	var password=req.body.pw
-	var post=[name,password]
-
-	let sql='SELECT * from tecnico WHERE nome = ? AND password = ?'
-
-	bd.connection.query(sql,post)
-});
-
+/*
 app.post('/login',(req,res)=>{
 	var name=req.body.nome
 	var password=req.body.pw
@@ -154,97 +148,8 @@ app.post('/login',(req,res)=>{
 		res.end();
 	}
 });
+*/
 
-app.get('/bilhetes',(req,res)=>{
-	res.sendFile(__dirname+'/FrontEnd/bilhetes.html');
-});
-
-app.get('/bilhete',(req,res)=>{
-	let sql='SELECT * from Bilhete'
-	bd.execSQLQuery(sql,res);
-});
-
-app.post('/regServico',(req,res)=>{
-	console.log("POST",req.body.idTecnico)
-
-	var id=req.body.idTecnico;
-	var funcao=req.body.funcao;
-	const post={descricao: funcao,idTecnico: id}
-	let sql='INSERT INTO serviço SET ?'
-	bd.connection.query(sql,post);
-	res.status(200).send(req.body)
-});
-
-app.post('/bilhete', (req, res) => {
-	var name=req.body.name;
-	var desc=req.body.desc;
-	const post={nome: name,funcao: desc};
-	console.log(name,desc)
-	let sql1='INSERT INTO tecnico SET ?'
-	bd.connection.query(sql1,post);
-	res.status(200).send(req.body)
-});
-//CONTROLLERS
-app.get('/evento',(req,res)=>{
-	console.log("GET")
-	res.sendFile(__dirname+"/FrontEnd/eventos1.html");
-});
-
-app.get('/eventos',(req,res)=>{
-	let sql='SELECT * from Evento'
-	bd.execSQLQuery(sql,res);
-});
-
-app.get('/regEvento',(req,res)=>{
-	res.sendFile(__dirname+"/FrontEnd/regEventos1.html");
-});
-
-app.post('/evento', (req, res) => {
-	var data=req.body.data_inicio;
-	var desc=req.body.descricao;
-	var tipo=req.body.tipo;
-	const post={data_inicio: data,tipo: tipo,descricao: desc};
-	console.log(data,desc)
-	let sql1='INSERT INTO Evento SET ?'
-	bd.connection.query(sql1,post);
-	res.status(200).send(req.body)
-});
-
-app.delete('/evento/:id',(req,res)=>{
-	const update=parseInt(req.params.id)
-	const query=bd.connection.query('DELETE FROM Evento WHERE idEvento=?',update,function(err,rows,fields){
-		console.log(query.sql)
-
-		if(!err){
-			console.log("Database updated successfully.")
-		}
-		else
-			console.log(err)
-	});
-	res.end();
-})
-
-app.put('/evento/:id',(req,res)=>{
-	const idEvento=parseInt(req.params.id);
-	var data=req.body.data_inicio;
-	var desc=req.body.descricao;
-	var tipo=req.body.tipo;
-	const update={data_inicio: data,tipo: tipo,descricao: desc,idEvento: idEvento};
-	const query=bd.connection.query('UPDATE Evento SET data_inicio=?,tipo=?,descricao=? WHERE idEvento=?',update,function(err,rows,fields){
-		console.log(query.sql)
-
-		if(!err){
-			console.log("Database updated successfully.")
-		}
-		else
-			console.log(err)
-	});
-})
-
-app.get('/about',(req,res)=>{
-	res.sendFile(__dirname+'/FrontEnd/about.html');
-})
-
-app.listen(port, ()=> console.log('Running at port ' + port));
-//app.listen(8080);
+//app.listen(port, ()=> console.log('Running at port ' + port));
+app.listen(8080);
 
