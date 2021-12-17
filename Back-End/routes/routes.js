@@ -8,7 +8,7 @@ const eventController = require('../controllers/eventController');
 const organizationController = require('../controllers/organizationController');
 const ticketController = require('../controllers/ticketController');*/
 
-router.get('/', (req, res) => {
+router.get('/',function (req, res){
 	res.sendFile(app.dir+'/FrontEnd/inde.html')
 });
 /*
@@ -26,21 +26,21 @@ router.post('/login1',(req,res)=>{
 	bd.connection.query(sql,post)
 });*/
 
-router.get('/evento',(req,res)=>{
+router.get('/evento',function(req,res){
 	console.log("GET")
 	res.sendFile(app.dir+"/FrontEnd/eventos1.html");
 });
 //CONTROLLER DOS EVENTOS(passar pos controllers)
-router.get('/eventos',(req,res)=>{
+router.get('/eventos',function(req,res){
 	let sql='SELECT * from Evento'
 	bd.execSQLQuery(sql,res);
 });
 
-router.get('/regEvento',(req,res)=>{
+router.get('/regEvento',function(req,res){
 	res.sendFile(app.dir+"/FrontEnd/regEventos1.html");
 });
 
-app.get('/about',(req,res)=>{
+router.get('/about',function(req,res){
 	res.sendFile(__dirname+'/FrontEnd/about.html');
 })
 
