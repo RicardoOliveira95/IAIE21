@@ -199,6 +199,8 @@
             <option value="musica">Música</option>
             <option value="teatro">Teatro</option>
             <option value="danca">Dança</option>
+            <option value="danca">Desporto</option>
+            <option value="danca">Cultural</option>
         </select>
         <label for="start">Data de concretização:</label>
 
@@ -261,7 +263,7 @@
 
             for(const evento of eventos){
 
-                strHtml+=`<h4>${evento.tipo}</h4><input type="checkbox" id="idEvento" name="idEvento" value=${evento.idEvento}>`
+                strHtml+=`<h4>${evento.tipo}</h4>`
 
             }
 
@@ -277,29 +279,6 @@
 
 	<script src="https://content.powerapps.com/resource/powerappsportal/dist/default-1046.bundle-f3545c14ca.js"></script>
 
-	
-	
-	
-	<script>
-		//this event will update the title of the page based on active breadcrumb
-		$('.breadcrumb').ready(function () {
-			if ($('.breadcrumb').is(':visible')) {
-				document.querySelector('title').innerHTML = ($('.breadcrumb > li.active').text() + "&nbsp;· Portal do Iniciante");
-			}
-		});
-
-		function GoToNewEditor() {
-			var editCmsUrlSegment = "EditInCms";
-			var currentUrl = window.location.href;
-			if (currentUrl.indexOf('?') > -1) {
-				var urlSegments = currentUrl.split("?");
-				window.location.href = window.location.origin + '/' + editCmsUrlSegment + window.location.pathname + '?' + urlSegments[1];
-			}
-			else {
-				window.location.href = window.location.origin + '/' + editCmsUrlSegment + window.location.pathname;
-			}
-		}
-	</script>
 	
 		
 	
