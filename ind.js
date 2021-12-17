@@ -14,7 +14,7 @@ var Moloni=require('moloni');
 //GET CSS's and IMG's
 //app.use('/FrontEnd/css',express.static('css'));
 //app.use('/FrontEnd/static',express.static('static'));
-
+const dir=__dirname;
 console.log(__dirname)
 
 
@@ -152,10 +152,5 @@ app.post('/login',(req,res)=>{
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
-
-module.exports = app;
-
-const index = require('./Back-End/controllers/eventController');
-app.use('/', index);
-module.exports = app;
-
+module.exports = {app:app,dir:dir};
+const routes = require("./Back-End/routes/routes")
