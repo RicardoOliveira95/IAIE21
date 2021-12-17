@@ -2,11 +2,11 @@ const app = require("../../ind");
 const router = require('express').Router();
 const bd = require("../../config/config.js");
 app.app.use('/',router);
-/*const categoryController = require('../controllers/categoryController');
+const categoryController = require('../controllers/categoryController');
 const clientController = require('../controllers/clientController');
 const eventController = require('../controllers/eventController');
 const organizationController = require('../controllers/organizationController');
-const ticketController = require('../controllers/ticketController');*/
+const ticketController = require('../controllers/ticketController');
 
 router.get('/',function (req, res){
 	res.sendFile(app.dir+'/FrontEnd/inde.html')
@@ -30,11 +30,17 @@ router.get('/evento',function(req,res){
 	console.log("GET")
 	res.sendFile(app.dir+"/FrontEnd/eventos1.html");
 });
+
+//routes
+
+router.get('/eventos', eventController.read);
+router.post('/evento', eventController.post);
 //CONTROLLER DOS EVENTOS(passar pos controllers)
-router.get('/eventos',function(req,res){
-	let sql='SELECT * from Evento'
-	bd.execSQLQuery(sql,res);
-});
+
+
+router.get('/eventos', eventController.read);
+
+
 
 router.get('/regEvento',function(req,res){
 	res.sendFile(app.dir+"/FrontEnd/regEventos1.html");

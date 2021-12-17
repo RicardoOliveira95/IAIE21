@@ -1,15 +1,12 @@
 const app = require('../../ind');
 const router = require('express').Router();
-const bd = require("./config/config.js");
-app.use('/', router);
-/*
-app.get('/eventos',(req,res)=>{
-	let sql='SELECT * from Evento'
-	bd.execSQLQuery(sql,res);
-});
-*/
+const bd = require("../../config/config");
+app.app.use('/', router);
+
+
+
 function read(req, res) {
-    const query = connect.con.query('SELECT * FROM Evento',
+    const query = bd.connection.query('SELECT * FROM Evento',
         function (err, rows, fields) {
             console.log(query.sql);
             if(err){
@@ -20,18 +17,20 @@ function read(req, res) {
         });
 };
 
-app.post('/evento', (req, res) => {
+function post(req, res){
+	
 	var data=req.body.data_inicio;
 	var desc=req.body.descricao;
 	var tipo=req.body.tipo;
-	const post={data_inicio: data,tipo: tipo,descricao: desc};
-	console.log(data,desc)
-	let sql1='INSERT INTO Evento SET ?'
-	bd.connection.query(sql1,post);
-	res.status(200).send(req.body)
-});
-
-app.delete('/evento/:id',(req,res)=>{
+	  const post = [data, desc, tipo];
+	  const sql1 = bd.connection.query('INSERT INTO Evento SET data_inicio = ?, tipo = ?,descricao = ?',post,
+	 function(req, res){
+		console.log(sql1.sql); 
+	 } 
+	)
+};
+/*
+router.delete('/evento/:id',function(req,res){
 	const update=parseInt(req.params.id)
 	const query=bd.connection.query('DELETE FROM Evento WHERE idEvento=?',update,function(err,rows,fields){
 		console.log(query.sql)
@@ -45,11 +44,11 @@ app.delete('/evento/:id',(req,res)=>{
 	res.end();
 })
 
-app.put('/evento/:id',(req,res)=>{
+router.put('/evento/:id',function(req,res){
 	const idEvento=parseInt(req.params.id);
-	var data=req.body.data_inicio;
-	var desc=req.body.descricao;
-	var tipo=req.body.tipo;
+	const data=req.body.data_inicio;
+	const desc=req.body.descricao;
+	const tipo=req.body.tipo;
 	const update={data_inicio: data,tipo: tipo,descricao: desc,idEvento: idEvento};
 	const query=bd.connection.query('UPDATE Evento SET data_inicio=?,tipo=?,descricao=? WHERE idEvento=?',update,function(err,rows,fields){
 		console.log(query.sql)
@@ -61,7 +60,8 @@ app.put('/evento/:id',(req,res)=>{
 			console.log(err)
 	});
 })
-
+*/
 module.exports = {
-    read: read
+    read: read,
+	post: post
 }
