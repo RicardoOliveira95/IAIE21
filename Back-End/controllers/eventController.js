@@ -1,7 +1,7 @@
-console.log("CONTROLLER")
-
-const app = express();
-
+const app = require('../../ind');
+const router = require('express').Router();
+const bd = require("./config/config.js");
+app.use('/', router);
 /*
 app.get('/eventos',(req,res)=>{
 	let sql='SELECT * from Evento'
