@@ -1,4 +1,5 @@
 <html>
+<title id="title">Area Cliente</title>
 <style>
 * {box-sizing: border-box}
 
@@ -72,6 +73,7 @@ button:hover {
 <form action="action_page.php" style="border:1px solid #ccc">
   <div class="container">
     <h1 style="color:orange">Compra</h1>
+    <h2 id="subTitle"></h2>
     <p>Preencha este formulario para adquirir bilhete(s).</p>
     <hr>
 
@@ -99,4 +101,23 @@ button:hover {
     </div>
   </div>
 </form>
+<script type="text/javascript">
+  window.onload=()=>{
+    var url=window.location.href;
+    const arr=url.split("/");
+    const id=arr[4];
+    console.log(id)
+    const titulo=document.getElementById('title');
+    const evTitle=document.getElementById('subTitle');
+
+    const renderEvent=async()=>{
+    const response=await fetch(`http://localhost:8080/eventos/${id}`);
+    evento=await response.json();
+    console.log(evento[0]);
+    titulo.innerHTML=evento[0].descricao;
+    subTitle.innerHTML=evento[0].descricao;}
+
+    renderEvent();
+  }
+</script>
 </html>
