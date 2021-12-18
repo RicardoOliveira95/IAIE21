@@ -30,6 +30,19 @@ router.get('/evento',function(req,res){
 	console.log("GET")
 	res.sendFile(app.dir+"/FrontEnd/eventos1.html");
 });
+//CLIENTS
+router.get('/cliente',function(req,res){
+	res.sendFile(app.dir+'/FrontEnd/cliente.html');
+})
+
+router.get('/clientes',function(req,res){
+	let sql='SELECT * from Evento'
+	bd.execSQLQuery(sql,res);
+})
+
+router.get('/cliente/:id',function(req,res){
+	res.sendFile(app.dir+'/FrontEnd/cliente.html')
+})
 
 //routes
 
