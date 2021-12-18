@@ -63,6 +63,28 @@ router.delete('/eventos/:id',(req,res)=>{
 	});
 	res.end();
 })
+//Clients
+router.get('/cliente',function(req,res){
+	res.sendFile(app.dir+'../../FrontEnd/cliente.html');
+})
+
+router.get('/clientes',function(req,res){
+	let sql='SELECT * from Evento'
+	bd.execSQLQuery(sql,res);
+})
+
+router.post('/cliente',function(req,res){
+	var idBilhete=req.body.idBilhete;
+	var idEvento=req.body.idEvento;
+	var idCliente=req.body.idCliente;
+	var Nome=req.body.Nome;
+	var email=req.body.email;
+	const post={idBilhete: idBilhete,idEvento: idEvento,idCliente: idCliente,Nome: Nome,email: email};
+	//console.log(data,desc)
+	let sql1='INSERT INTO Cliente SET ?'
+	bd.connection.query(sql1,post);
+	res.status(200).send(req.body)
+});
 
 module.exports=router;
 //app.get('/eventos',eventController.read);
