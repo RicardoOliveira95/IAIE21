@@ -48,11 +48,10 @@ router.get('/cliente/:id',function(req,res){
 
 router.get('/eventos', eventController.read);
 router.post('/evento', eventController.post);
+router.get('/tickets', ticketController.read);
+router.post('/ticket', ticketController.post);
+
 //CONTROLLER DOS EVENTOS(passar pos controllers)
-
-
-router.get('/eventos', eventController.read);
-
 
 
 router.get('/regEvento',function(req,res){

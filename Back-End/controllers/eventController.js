@@ -2,6 +2,7 @@ const app = require('../../ind');
 const router = require('express').Router();
 const bd = require("../../config/config");
 app.app.use('/', router);
+const { json } = require('express');
 
 
 
@@ -24,9 +25,14 @@ function post(req, res){
 	var tipo=req.body.tipo;
 	  const post = [data, desc, tipo];
 	  const sql1 = bd.connection.query('INSERT INTO Evento SET data_inicio = ?,descricao = ?,tipo = ?',post,
-	 function(req, res){
-		console.log(sql1.sql); 
-	 } 
+	  function (err, rows, fields) {
+		console.log(sql1.sql);
+		if(err){
+			console.log(err);
+		} else{
+				res.send(rows);
+		}
+	}
 	)
 };
 /*
