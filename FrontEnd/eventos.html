@@ -103,7 +103,7 @@
    				<td>${evento.tipo}</td>
    				<td>${evento.descricao}</td>
    				<td><button onclick="deleteServico(${evento.idEvento})">DELETE</button></td>
-   				<td><button onclick="window.location.href='http://localhost:8080/cliente.html';">BUY</button></td></tr>`
+   				<td><button onclick="window.location.href='http://localhost:8080/cliente/${evento.idEvento}';">BUY</button></td></tr>`
 			}
 			strHtml+='</tbody></table>'
 			tabServ.innerHTML=strHtml
