@@ -89,6 +89,7 @@
       				<th>Tipo</th>
  					<th>Descricao</th>
  					<th>Accao</th>
+ 					<th>Accao</th>
      			</tr>
     		</thead>
     		</table>`
@@ -101,7 +102,8 @@
    				strHtml+=`<tr><td>${evento.idEvento}</td>
    				<td>${evento.tipo}</td>
    				<td>${evento.descricao}</td>
-   				<td><button onclick="deleteServico(${evento.idEvento})">DELETE</button></td></tr>`
+   				<td><button onclick="deleteServico(${evento.idEvento})">DELETE</button></td>
+   				<td><button onclick="window.location.href='http://localhost:8080/cliente.html';">BUY</button></td></tr>`
 			}
 			strHtml+='</tbody></table>'
 			tabServ.innerHTML=strHtml
