@@ -208,6 +208,8 @@
        value="2021-11-14"
        min="2021-01-01" max="2022-12-31">
         <br>
+        <h4>Descricao</h4>
+        <input id="descricao" name="descricao"></input>
         <div id="myForm"></div>
         
     <button type="button" onclick="regEvento()">SUBMIT</button>
@@ -249,7 +251,7 @@
 
             const myForm=document.getElementById("myForm")
 
-            let strHtml='<form action="http://localhost:8080/evento" method="POST"><h3>Escolha um evento</h3><br><h4>Descricao</h4><input id="descricao" name="descricao"></input>'
+          //  let strHtml='<form action="http://localhost:8080/evento" method="POST"><h3>Escolha um evento</h3><br><h4>Descricao</h4><input id="descricao" name="descricao"></input>'
 
             /*strHtml+=`<input type="date" id="start" name="trip-start"
                 value="2018-07-22"
@@ -271,6 +273,7 @@
         }
         renderTecs();
     }
+    
     </script>
 	
 	<script src="https://content.powerapps.com/resource/powerappsportal/dist/postpreform.bundle-0147112061.js"></script>
