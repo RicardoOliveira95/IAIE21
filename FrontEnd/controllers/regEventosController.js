@@ -22,7 +22,6 @@ function regEvento(){
     dados.data_inicio = document.getElementById('start').value;
     dados.tipo = document.getElementById('tipo').value;
     dados.descricao = document.getElementById('descricao').value;
-    console.log(domain+"evento");
     try{
         fetch(domain+"evento", {
             headers: { 'Content-Type': 'application/json' },
