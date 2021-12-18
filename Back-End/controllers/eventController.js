@@ -23,7 +23,7 @@ function post(req, res){
 	var desc=req.body.descricao;
 	var tipo=req.body.tipo;
 	  const post = [data, desc, tipo];
-	  const sql1 = bd.connection.query('INSERT INTO Evento SET data_inicio = ?, tipo = ?,descricao = ?',post,
+	  const sql1 = bd.connection.query('INSERT INTO Evento SET data_inicio = ?,descricao = ?,tipo = ?',post,
 	 function(req, res){
 		console.log(sql1.sql); 
 	 } 
