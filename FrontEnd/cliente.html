@@ -63,6 +63,45 @@ button:hover {
   display: table;
 }
 
+/*MODAL STUFF*/
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}  
+  
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
   .cancelbtn, .signupbtn {
@@ -91,21 +130,39 @@ button:hover {
     <input type="text" placeholder="1" name="qtd" id = 'nbilhetes' required>
 
     <label><br>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Factura
+      <input id="check" type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Factura
     </label>
 
     <p>Ao confirmar esta compra concorda com os nossos <a href="#" style="color:dodgerblue">Termos & Privacidades</a>.</p>
 
     <div class="clearfix">
       <button type="button" class="cancelbtn">Cancelar</button>
-      <button type="button" onclick=regBilhete() class="signupbtn">Confirmar</button>
+      <button type="button" onclick=checkMoloni() class="signupbtn">Confirmar</button>
     </div>
   </div>
-
 </form>
+<!--MODAL-->
+<div id="modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>MOLONI</p>
+    <form action="" style="border:1px solid #ccc">
+      <label for="morada"><b>Morada</b></label>
+    <input type="text" placeholder="Morada" name="morada" required>
+    <label for="nif"><b>Numero de Identificacao Fiscal</b></label><br>
+    <input type="text" placeholder="NIF" name="nif" required><br>
+      <button onclick="window.location.href='http://localhost:8080/';" type="submit" class=signupbtn>Submeter</button>
+      <button type="button" class="cancelbtn">Cancelar</button>
+    </form>
+  </div>
+
+</div>
 
 <script type="text/javascript">
-  /*window.onload=()=>{
+  //MOSTRAR TITULO
+  window.onload=()=>{
     var url=window.location.href;
     const arr=url.split("/");
     const id=arr[4];
@@ -121,7 +178,32 @@ button:hover {
     subTitle.innerHTML=evento[0].descricao;}
 
     renderEvent();
-  }*/
+  }
+  //ABRIR MODAL
+  function checkMoloni(){
+  regBilhete();
+  var check=document.getElementById("check");
+
+    if(check.checked==true)
+      displayMoloniForm();}
+
+  function displayMoloniForm(){
+    console.log("DISPLAY MOLONI");
+    var modal=document.getElementById("modal");
+    var span = document.getElementsByClassName("close")[0];
+
+    modal.style.display="block";
+
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+    }
+  }
+  }
 </script>
 
 <script src="./controllers/buyTicketsController.js"></script>
