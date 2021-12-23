@@ -88,6 +88,7 @@
       				<th>ID</th>
       				<th>Tipo</th>
  					<th>Descricao</th>
+					<th>Preco</th>
  					<th>Accao</th>
  					<th>Accao</th>
      			</tr>
@@ -102,6 +103,7 @@
    				strHtml+=`<tr><td>${evento.idEvento}</td>
    				<td>${evento.tipo}</td>
    				<td>${evento.descricao}</td>
+				<td>${evento.preco}</td>
    				<td><button onclick="deleteServico(${evento.idEvento})">DELETE</button></td>
    				<td><button onclick="window.location.href='http://127.0.0.1:8080/PW21/FrontEnd/cliente.html?id_evento=${evento.idEvento}';">BUY</button></td></tr>`
 			}
