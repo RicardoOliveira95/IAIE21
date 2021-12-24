@@ -86,16 +86,28 @@ router.get('/clientes',function(req,res){
 })
 
 router.post('/cliente',function(req,res){
-	var idBilhete=req.body.idBilhete;
-	var idEvento=req.body.idEvento;
-	var idCliente=req.body.idCliente;
-	var Nome=req.body.Nome;
+	var idCliente=5;
+	var nome=req.body.nome;
 	var email=req.body.email;
-	const post={idBilhete: idBilhete,idEvento: idEvento,idCliente: idCliente,Nome: Nome,email: email};
-	//console.log(data,desc)
-	let sql1='INSERT INTO Cliente SET ?'
-	bd.connection.query(sql1,post);
-	res.status(200).send(req.body)
+	var nif=req.body.nif;
+	var morada=req.body.morada;
+	var cod_postal=req.body.cod_postal;
+	var pais=req.body.pais;
+	var qtd=req.body.qtd;
+	
+	var costumer = {
+	"company_id":"0","vat":`${nif}`,"number":`${idCliente}`,"name":`${nome}`,"language_id":"2","address":`${morada}`,"zip-code":`${cod_postal}`,
+	"city":"Braga","country_id":"1","email":"ze@mail.pt","website":"http://www.site.com","phone":"91999999","fax":"ns","contact_name":`#`,
+	"contact_email":`${email}`,"contact_phone":"253999999","notes":"notas","salesman_id":"1","maturity_date_id":"1",
+	"payment_day":"0","discount":"10","credit_limit":"100","qty_copies_document":"2","payment_method_id":"1",
+	"delivery_method_id":"2","field_notes":"notas de campo"}
+	console.log(costumer);
+	app.moloni.customers('insert',costumer, function (error, result) {
+		if (error)
+			return console.error(error);
+
+		console.log(result);
+	});
 });
 
 module.exports=router;
