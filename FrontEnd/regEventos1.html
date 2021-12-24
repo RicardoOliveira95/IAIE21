@@ -111,7 +111,58 @@
             <div class="navbar-right menu-bar " data-weblinks-maxdepth="2">
                 <ul class="nav navbar-nav weblinks" role="menubar">
                     
+                    
+                    
+                    
+                    
+                    <li role="none" class="weblink ">
+                        <a role="menuitem" aria-label="Resid&#234;ncia" href="./" title="Resid&#234;ncia" >
+                            Resid&#234;ncia
+                        </a>
+                        
+                    </li>
+                    
+                    
                     <li class="divider-vertical" aria-hidden="true"></li>
+                    
+                    
+                    
+                    
+                    <li role="none" class="weblink  dropdown">
+                        <a role="menuitem" aria-label="Servi&#231;os" href="#" class="dropdown-toggle" data-toggle="dropdown" title="Servi&#231;os" >
+                            Servi&#231;os
+                            <span class="caret"></span>
+                        </a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                            
+                            <li role="none">
+                                <a role="menuitem" aria-label="Servi&#231;os" href="./service"   title="Servi&#231;os" >Servi&#231;os</a>
+                            </li>
+                            <div class="divider"></div>
+                            
+                            
+                            <li role="none">
+                                <a role="menuitem" aria-label="Produto A (exemplo)" href="./page1"   title="Produto A (exemplo)" >
+                                    Produto A (exemplo)
+                                </a>
+                            </li>
+                            
+                            <li role="none">
+                                <a role="menuitem" aria-label="Produto B (exemplo)" href="./page2"   title="Produto B (exemplo)" >
+                                    Produto B (exemplo)
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        
+                    </li>
+                    
+                    
+                    <li class="divider-vertical" aria-hidden="true"></li>
+                    
+                    
+                    
                     
                     <li role="none" class="weblink ">
                         <a role="menuitem" aria-label="Sobre n&#243;s" href="./about" title="Sobre n&#243;s" >
@@ -120,15 +171,11 @@
                         
                     </li>
                     
-                    <li class="divider-vertical" aria-hidden="true"></li>
-
                     <li role="none" class="weblink">
                         <a role="menuitem" arial-label="Consultar eventos" href="./evento" title="Consultar eventos">
-                            Eventos
+                            Consultar Eventos
                         </a>
                     </li>
-                    
-                    <li class="divider-vertical" aria-hidden="true"></li>
 
                     <li role="none" class="weblink">
                         <a role="menuitem" arial-label="Registar evento" href="./regEvento" title="Registar evento">
@@ -199,8 +246,6 @@
             <option value="musica">Música</option>
             <option value="teatro">Teatro</option>
             <option value="danca">Dança</option>
-            <option value="danca">Desporto</option>
-            <option value="danca">Cultural</option>
         </select>
         <label for="start">Data de concretização:</label>
 
@@ -208,11 +253,14 @@
        value="2021-11-14"
        min="2021-01-01" max="2022-12-31">
         <br>
-        <h4>Descricao</h4>
-        <input id="descricao" name="descricao"></input>
+        <label for="preco">Definir preco(uni)</label>
+        <input type="number" name="preco"><br>
+        <h4>Descricao</h4><input id="descricao" name="descricao"></input>
         <div id="myForm"></div>
         
-    <button type="button" onclick="regEvento()">SUBMIT</button>
+        <div id="myForm"></div>
+        
+    <button onclick="validateSelection()">SUBMIT</button>
     </form>
 </div>
     <br>
@@ -251,7 +299,7 @@
 
             const myForm=document.getElementById("myForm")
 
-          //  let strHtml='<form action="http://localhost:8080/evento" method="POST"><h3>Escolha um evento</h3><br><h4>Descricao</h4><input id="descricao" name="descricao"></input>'
+            let strHtml='<form action="http://localhost:8080/evento" method="POST"><h3>Escolha um evento</h3><br><h4>Descricao</h4><input id="descricao" name="descricao"></input>'
 
             /*strHtml+=`<input type="date" id="start" name="trip-start"
                 value="2018-07-22"
@@ -265,15 +313,14 @@
 
             for(const evento of eventos){
 
-                strHtml+=`<h4>${evento.tipo}</h4>`
+                strHtml+=`<h4>${evento.tipo}</h4><input type="checkbox" id="idEvento" name="idEvento" value=${evento.idEvento}>`
 
             }
 
             myForm.innerHTML=strHtml
         }
-        renderTecs();
+        //renderTecs();
     }
-    
     </script>
 	
 	<script src="https://content.powerapps.com/resource/powerappsportal/dist/postpreform.bundle-0147112061.js"></script>
