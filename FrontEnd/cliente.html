@@ -110,7 +110,7 @@ button:hover {
 }
 </style>
 <body>
-<form action="action_page.php" style="border:1px solid #ccc">
+<form style="border:1px solid #ccc">
   <div class="container">
     <h1 style="color:orange">Compra</h1>
     <h2 id="subTitle"></h2>
@@ -118,16 +118,16 @@ button:hover {
     <hr>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Email" id='email' name="email" required>
+    <input id="email" type="text" placeholder="Email" name="email" required>
     <label for="nome"><b>Nome</b></label>
-    <input type="text" placeholder="Nome" id='nome' name="name" required>
+    <input id="nome" type="text" placeholder="Nome" name="nome" required>
     <label for="morada"><b>Morada</b></label>
-    <input type="text" placeholder="Morada" id='morada' name="morada" required>
+    <input id="morada" type="text" placeholder="Morada" name="morada" required>
     <label for="nif"><b>Numero de Identificacao Fiscal</b></label><br>
-    <input type="text" placeholder="NIF" id='nif' name="nif" required><br>
+    <input id="nif" type="text" placeholder="NIF" name="nif" required><br>
 
     <label for="qtd"><b>Quantidade</b></label><br>
-    <input type="text" placeholder="1" name="qtd" id = 'nbilhetes' required>
+    <input id="qtd" type="text" placeholder="1" name="qtd" required>
 
     <label><br>
       <input id="check" type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Factura
@@ -137,15 +137,18 @@ button:hover {
 
     <div class="clearfix">
       <button type="button" class="cancelbtn">Cancelar</button>
-      <button type="button" onclick=checkMoloni() class="signupbtn">Confirmar</button>
+      <button type="button" onclick="checkMoloni()" type="submit" class="signupbtn">Confirmar</button>
     </div>
   </div>
 </form>
-<!-- Modal content -->
+<!--MODAL-->
+<div id="modal" class="modal">
+
+  <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
     <p>MOLONI</p>
-    <form action="" style="border:1px solid #ccc">
+    <form style="border:1px solid #ccc">
       <label for="morada"><b>Pais</b></label>
     <select id="country" name="country">
    <option value="Afganistan">Afghanistan</option>
@@ -395,9 +398,9 @@ button:hover {
    <option value="Zambia">Zambia</option>
    <option value="Zimbabwe">Zimbabwe</option>
 </select><br>
-    <label for="nif"><b>Código postal</b></label><br>
-    <input type="text" placeholder="0000-000" name="nif" required><br>
-      <button onclick="window.location.href='http://localhost:8080/';" type="submit" class=signupbtn>Submeter</button>
+    <label for="cod_postal"><b>Código postal</b></label><br>
+    <input id="cod_postal" type="text" placeholder="0000-000" name="cod_postal" required><br>
+      <button type="button" onclick="regMoloni()" class=signupbtn>Submeter</button>
       <button type="button" class="cancelbtn">Cancelar</button>
     </form>
   </div>
@@ -405,7 +408,8 @@ button:hover {
 </div>
 
 <script type="text/javascript">
-  //MOSTRAR TITULO
+  var id=0;
+  var price=0;
   window.onload=()=>{
     var url=window.location.href;
     const arr=url.split("/");
@@ -418,14 +422,15 @@ button:hover {
     const response=await fetch(`http://localhost:8080/eventos/${id}`);
     evento=await response.json();
     console.log(evento[0]);
+    id=evento[0].idEvento;
+    price=evento[0].preco;
     titulo.innerHTML=evento[0].descricao;
     subTitle.innerHTML=evento[0].descricao;}
 
     renderEvent();
-  }
-  //ABRIR MODAL
-  function checkMoloni(){
-  regBilhete();
+}
+
+function checkMoloni(){
   var check=document.getElementById("check");
 
     if(check.checked==true)
@@ -447,6 +452,35 @@ button:hover {
         modal.style.display = "none";
     }
   }
+  }
+
+  function regMoloni(){
+    var nome=document.getElementById("nome").value;
+    var morada=document.getElementById("morada").value;
+    var nif=document.getElementById("nif").value;
+    var email=document.getElementById("email").value;
+    var qtd=document.getElementById("qtd").value;
+    var cod_postal=document.getElementById("cod_postal").value;
+    var pais=document.getElementById("country").value;
+console.log("REGISTER:",nome,morada,email,nif,cod_postal,pais);
+      return fetch(`http://localhost:8080/cliente`, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },          
+        method: "POST",
+        body: `nome=${nome}&morada=${morada}&nif=${nif}&email=${email}&qtd=${qtd}&cod_postal=${cod_postal}&pais=${pais}`
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .catch(error => {
+          swal.showValidationError(`Pedido falhado: ${error}`);
+        });
+
+    console.log(idEvento);
   }
 </script>
 
