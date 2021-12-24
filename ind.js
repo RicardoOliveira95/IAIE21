@@ -219,5 +219,5 @@ app.post('/login',(req,res)=>{
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
-module.exports = {app:app,dir:dir};
+module.exports = {app:app,dir:dir,moloni:moloni};
 const routes = require("./Back-End/routes/routes")
