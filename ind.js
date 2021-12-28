@@ -105,6 +105,8 @@ var params5={"company_id":"0","category_id":"4644949","type":"1","name":"Bilhete
 
 var params6={"company_id":"0","category_id":"4644949","type":"Serviço","name":"Bilhete Concerto Jazz","summary":"","reference":"MA_23_","ean":"","price":"20","unit_id":"1824561","has_stock":"0","stock":"0","pos_favorite":"0",
 "at_product_category":"","exemption_reason":"","taxes":{},"suppliers":{},"warehouses":{},"warehouse_id":""};
+
+ar category={"company_id":"0","parent_id":"0","name":"Servicos","description":"servicos","pos_enabled":""};
 //SERVICOID->4644949
 /*moloni.customers('count', params, function (error, result) {
 	if (error)
@@ -119,7 +121,7 @@ moloni.productCategories('insert',params6 ,function (error, result) {
 	if (error)
 		return console.error(error);
 
-	console.log(result);*/
+	console.log(result);
 //ADICIONAR ARTIGO
 moloni.products('insert',params5 ,function (error, result) {
 	if (error)
@@ -133,7 +135,15 @@ moloni.products('count' , {"category_id":"4644949"} ,function (error, result) {
 		return console.error(error);
 
 	console.log(result);
-});
+});*/
+let serviceID="";
+//ADICIONAR CATEGORIA
+moloni.productCategories('insert',category ,function (error, result) {
+	if (error)
+		return console.error(error);
+
+	serviceID=result.category_id;
+	console.log(serviceID);});
 
 /*moloni.receipts('insert', params2, function (error, result) {
 	if (error)
@@ -219,5 +229,5 @@ app.post('/login',(req,res)=>{
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
-module.exports = {app:app,dir:dir,moloni:moloni};
+module.exports = {app:app,dir:dir,moloni:moloni,serviceID:serviceID};
 const routes = require("./Back-End/routes/routes")
