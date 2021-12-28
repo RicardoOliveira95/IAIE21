@@ -86,7 +86,7 @@ router.get('/clientes',function(req,res){
 })
 
 router.post('/cliente',function(req,res){
-	var idCliente=5;
+	var idCliente=6;  //ID DO MOLONI
 	var nome=req.body.nome;
 	var email=req.body.email;
 	var nif=req.body.nif;
@@ -108,6 +108,7 @@ router.post('/cliente',function(req,res){
 
 		console.log(result);
 	});
+	idCliente+=1;
 });
 
 module.exports=router;
