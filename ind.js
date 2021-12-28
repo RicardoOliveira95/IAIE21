@@ -136,14 +136,6 @@ moloni.products('count' , {"category_id":"4644949"} ,function (error, result) {
 
 	console.log(result);
 });*/
-let serviceID="";
-//ADICIONAR CATEGORIA
-moloni.productCategories('insert',category ,function (error, result) {
-	if (error)
-		return console.error(error);
-
-	serviceID=result.category_id;
-	console.log(serviceID);});
 
 /*moloni.receipts('insert', params2, function (error, result) {
 	if (error)
@@ -229,5 +221,5 @@ app.post('/login',(req,res)=>{
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
-module.exports = {app:app,dir:dir,moloni:moloni,serviceID:serviceID};
+module.exports = {app:app,dir:dir,moloni:moloni,,category:category};
 const routes = require("./Back-End/routes/routes")
