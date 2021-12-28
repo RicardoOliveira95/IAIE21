@@ -4,7 +4,14 @@ const bd = require("../../config/config");
 app.app.use('/', router);
 const { json } = require('express');
 
+let serviceID=0;
+//ADICIONAR CATEGORIA
+app.moloni.productCategories('insert',category ,function (error, result) {
+	if (error)
+		return console.error(error);
 
+	serviceID=result.category_id;
+	console.log(serviceID);});
 
 function read(req, res) {
     const query = bd.connection.query('SELECT * FROM Evento',
@@ -25,7 +32,7 @@ function post(req, res){
 	var tipo=req.body.tipo;
 	var preco=req.body.preco;
 	//moloni product [POST no MOLONI]
-	var product={"company_id":"0","category_id":"4655137","type":"1","name":`${desc}`,
+	var product={"company_id":"0","category_id":`${serviceID}`,"type":"1","name":`${desc}`,
 "summary":"","reference":"MA_26_","ean":"","price":`${preco}`,"unit_id":"1824561","has_stock":"0",
 "stock":"0","pos_favorite":"0","at_product_category":"","exemption_reason":"1",
 "taxes":{"tax_id":"2375396","value":"2.3","order":"3","cumulative":"0"},
