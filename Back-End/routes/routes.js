@@ -7,6 +7,7 @@ const clientController = require('../controllers/clientController');
 const eventController = require('../controllers/eventController');
 const organizationController = require('../controllers/organizationController');
 const ticketController = require('../controllers/ticketController');
+var idCliente=7;  //ID DO MOLONI
 
 router.get('/',function (req, res){
 	res.sendFile(app.dir+'/FrontEnd/inde.html')
@@ -86,7 +87,6 @@ router.get('/clientes',function(req,res){
 })
 
 router.post('/cliente',function(req,res){
-	var idCliente=6;  //ID DO MOLONI
 	var nome=req.body.nome;
 	var email=req.body.email;
 	var nif=req.body.nif;
