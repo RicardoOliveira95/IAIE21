@@ -3,6 +3,7 @@ const router = require('express').Router();
 const bd = require("../../config/config");
 app.app.use('/', router);
 const { json } = require('express');
+var reference=29;
 
 let serviceID=0;
 //ADICIONAR CATEGORIA
@@ -31,9 +32,10 @@ function post(req, res){
 	var desc=req.body.descricao;
 	var tipo=req.body.tipo;
 	var preco=req.body.preco;
+	var ref="MA_"+reference+"_";
 	//moloni product [POST no MOLONI]
 	var product={"company_id":"0","category_id":`${serviceID}`,"type":"1","name":`${desc}`,
-"summary":"","reference":"MA_26_","ean":"","price":`${preco}`,"unit_id":"1824561","has_stock":"0",
+"summary":"","reference":`${ref}`,"ean":"","price":`${preco}`,"unit_id":"1824561","has_stock":"0",
 "stock":"0","pos_favorite":"0","at_product_category":"","exemption_reason":"1",
 "taxes":{"tax_id":"2375396","value":"2.3","order":"3","cumulative":"0"},
 "suppliers":{"supplier_id":"","cost_price":""},"warehouses":{"warehouse_id":"","stock":""},"warehouse_id":""};
