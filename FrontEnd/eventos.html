@@ -89,6 +89,7 @@
       				<th>Tipo</th>
  					<th>Descricao</th>
  					<th>Preco</th>
+					<th>Data</th>
  					<th>Accao</th>
  					<th>Accao</th>
      			</tr>
@@ -104,6 +105,7 @@
    				<td>${evento.tipo}</td>
    				<td>${evento.descricao}</td>
    				<td>${evento.preco}€</th>
+				<td>${evento.data_inicio.substring(0,10)}</th>
    				<td><button onclick="deleteServico(${evento.idEvento})">DELETE</button></td>
    				<td><button onclick="window.location.href='http://localhost:8080/cliente/${evento.idEvento}';">BUY</button></td></tr>`
 			}
