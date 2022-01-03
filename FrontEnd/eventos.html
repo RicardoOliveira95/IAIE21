@@ -100,15 +100,21 @@
    		eventos = await response.json();
 
    		for(const evento of eventos){
-   			console.log("LOOP")
+   			var dateEv=new Date(evento.data_inicio.substring(0,10));
+   				var today = new Date();
+   			dateEv = dateEv.getFullYear()+'-'+(dateEv.getMonth()+1)+'-'+dateEv.getDate();
+	const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+		
+   			if(dateEv>date)
+				{
    				strHtml+=`<tr><td>${evento.idEvento}</td>
    				<td>${evento.tipo}</td>
    				<td>${evento.descricao}</td>
    				<td>${evento.preco}€</th>
-				<td>${evento.data_inicio.substring(0,10)}</th>
+   				<td>${evento.data_inicio.substring(0,10)}</th>
    				<td><button onclick="deleteServico(${evento.idEvento})">DELETE</button></td>
    				<td><button onclick="window.location.href='http://localhost:8080/cliente/${evento.idEvento}';">BUY</button></td></tr>`
-			}
+			}}
 			strHtml+='</tbody></table>'
 			tabServ.innerHTML=strHtml
    		}
