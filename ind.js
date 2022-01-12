@@ -18,7 +18,6 @@ const dir=__dirname;
 console.log(__dirname)
 
 
-
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
     res.header("Access-Control-Allow-Headers", "append,delete,entries,foreach,get,has,keys,set,values,Authorization, Access-Control-Allow-Origin, Access-Control-Allow-Credentials, X-Requested-With, Content-Type, Accept, Authorization");
@@ -106,7 +105,7 @@ var params5={"company_id":"0","category_id":"4644949","type":"1","name":"Bilhete
 var params6={"company_id":"0","category_id":"4644949","type":"Serviço","name":"Bilhete Concerto Jazz","summary":"","reference":"MA_23_","ean":"","price":"20","unit_id":"1824561","has_stock":"0","stock":"0","pos_favorite":"0",
 "at_product_category":"","exemption_reason":"","taxes":{},"suppliers":{},"warehouses":{},"warehouse_id":""};
 
-ar category={"company_id":"0","parent_id":"0","name":"Servicos","description":"servicos","pos_enabled":""};
+var category={"company_id":"0","parent_id":"0","name":"Servicos","description":"servicos","pos_enabled":""};
 //SERVICOID->4644949
 /*moloni.customers('count', params, function (error, result) {
 	if (error)
@@ -221,5 +220,5 @@ app.post('/login',(req,res)=>{
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
-module.exports = {app:app,dir:dir,moloni:moloni,,category:category};
+module.exports = {app:app,dir:dir,moloni:moloni,category:category};
 const routes = require("./Back-End/routes/routes")
