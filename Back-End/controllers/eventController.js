@@ -7,7 +7,7 @@ var reference=29;
 
 let serviceID=0;
 //ADICIONAR CATEGORIA
-app.moloni.productCategories('insert',category ,function (error, result) {
+app.moloni.productCategories('insert',app.category ,function (error, result) {
 	if (error)
 		return console.error(error);
 
