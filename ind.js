@@ -47,9 +47,9 @@ app.use('/Product B.png', express.static(__dirname + '/FrontEnd/static/Product B
 
 
 var moloni=new Moloni({
-	client_id: 'iaiepl7g1',
-	client_secret: '7d1bd1209a8d661c1d56c8e52d952f862e4ecc30',
-	username: 'jcmoliveirapt@gmail.com',
+	client_id: 'pl7g1iaie',
+	client_secret: 'd3d0d84848b8d4c3d160344361506f37acb29aea',
+	username: 'a72349@alunos.uminho.pt',
 	password: 'iaiepl7g1',
 	sandbox: true
 });
