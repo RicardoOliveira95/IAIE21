@@ -61,6 +61,20 @@ moloni.users('getMe', function (error, result) {
 	console.log(result);
 });
 
+//Tirar o ultimo id;
+function getLastNumber(){
+	moloni.customers('getLastNumber', function (error, result) {
+		if (error)
+			return console.error(error);
+
+		var id=parseInt(result.number)+1;
+		console.log("IDCLIENTE: ",id);
+	});
+	return id;
+}
+var idCli=getLastNumber();
+console.log("IDCliente: ",idCli);
+
 var params = {
 	"company_id":"0","vat":"1","number":"45","name":"Ze","language_id":"2","address":"Braga","zip-code":"4710-441","city":"Braga","country_id":"1","email":"ze@mail.pt"
 	,"website":"www.site.com","phone":"91999999","fax":"ns","contact_name":"Jose","contact_email":"mail2.com","contact_phone":"253999999","notes":"notas",
@@ -220,5 +234,5 @@ app.post('/login',(req,res)=>{
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
-module.exports = {app:app,dir:dir,moloni:moloni,category:category};
+module.exports = {app:app,dir:dir,moloni:moloni,category:category,idCli:idCli};
 const routes = require("./Back-End/routes/routes")
