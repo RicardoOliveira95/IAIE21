@@ -7,7 +7,7 @@ const clientController = require('../controllers/clientController');
 const eventController = require('../controllers/eventController');
 const organizationController = require('../controllers/organizationController');
 const ticketController = require('../controllers/ticketController');
-var idCliente=7;  //ID DO MOLONI
+var idCliente=app.idcli;  //ID DO MOLONI
 
 router.get('/',function (req, res){
 	res.sendFile(app.dir+'/FrontEnd/inde.html')
