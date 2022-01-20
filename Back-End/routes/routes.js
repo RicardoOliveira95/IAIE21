@@ -7,9 +7,10 @@ const clientController = require('../controllers/clientController');
 const eventController = require('../controllers/eventController');
 const organizationController = require('../controllers/organizationController');
 const ticketController = require('../controllers/ticketController');
-var idCliente=app.idcli;  //ID DO MOLONI
+var idCliente=app.idCli+1;  //ID DO MOLONI
 
 router.get('/',function (req, res){
+	console.log("IDCliente: ",idCliente);
 	res.sendFile(app.dir+'/FrontEnd/inde.html')
 });
 /*
@@ -49,6 +50,7 @@ router.get('/cliente/:id',function(req,res){
 
 router.get('/eventos', eventController.read);
 router.post('/evento', eventController.post);
+router.post('/addTicket',eventController.addTicket);
 router.get('/tickets', ticketController.read);
 router.post('/ticket', ticketController.post);
 
@@ -85,6 +87,7 @@ router.get('/clientes',function(req,res){
 	let sql='SELECT * from Evento'
 	bd.execSQLQuery(sql,res);
 })
+
 router.post('/cliente',function(req,res){
 	var nome=req.body.nome;
 	var email=req.body.email;
