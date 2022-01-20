@@ -9,33 +9,38 @@
 	<link rel="stylesheet" type="text/css" href="./css/theme.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/sb-admin.css">
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
     crossorigin="anonymous">
 </head>
 <body>
-	<h1><b>Registar Evento</b></h1>
-	<br>
-	<div>
-	<form action="http://localhost:8080/evento" method="POST">
-		<h3>Seleccionar Evento</h3>
-		<select name="tipo" id="tipo">
-			<option value="musica">Música</option>
-			<option value="teatro">Teatro</option>
-			<option value="danca">Dança</option>
-		</select>
-		<label for="start">Data de concretização:</label>
+	<div id="content-wrapper">
 
-		<input type="date" id="start" name="data_inicio"
-       value="2021-11-14"
-       min="2021-01-01" max="2022-12-31">
-		<br>
-		<div id="myForm"></div>
-		
-	<button onclick="validateSelection()">SUBMIT</button>
-	</form>
-</div>
-	<br>
-	<script type="text/javascript">
+        <div class="container-fluid">
+			<h1><b>Registar Evento</b></h1>
+			<br>
+			<div>
+			<form action="http://localhost:8080/evento" method="POST">
+				<h3>Seleccionar Evento</h3>
+				<select name="tipo" id="tipo">
+					<option value="musica">Música</option>
+					<option value="teatro">Teatro</option>
+					<option value="danca">Dança</option>
+				</select>
+				<label for="start">Data de concretização:</label>
+
+				<input type="date" id="start" name="data_inicio"
+		       value="today"
+		       min="today" max="2022-12-31">
+				<br>
+				<div id="myForm"></div>
+				
+			<button onclick="validateSelection()">SUBMIT</button>
+			</form>
+		</div>
+			<br>
+		</div></div>
+			<script type="text/javascript">
 
 		function validateSelection(){
 			console.log("VALIDATION!")
@@ -55,14 +60,12 @@
 		}
 
 		window.onload=()=>{
-
+			var showToday=document.getElementByValue("today");
 			var today = new Date();
-
 			var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
 			var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
 			var dateTime = date+' '+time;
+			showToday.innerHTML(dateTime);
 
 		console.log(Date())
 
