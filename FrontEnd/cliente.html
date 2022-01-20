@@ -398,8 +398,12 @@ button:hover {
    <option value="Zambia">Zambia</option>
    <option value="Zimbabwe">Zimbabwe</option>
 </select><br>
-    <label for="cod_postal"><b>Código postal</b></label><br>
+    <label for="cidade"><b>Localidade:</b></label><br>
+    <input id="cidade" type="text" placeholder="cidade" name="cidade" required><br>
+    <label for="cod_postal"><b>Código postal:</b></label><br>
     <input id="cod_postal" type="text" placeholder="0000-000" name="cod_postal" required><br>
+    <label for="telefone"><b>Telefone:</b></label><br>
+    <input id="telefone" type="text" placeholder="91-000000" name="telefone" required><br>
       <button type="button" onclick="regMoloni()" class=signupbtn>Submeter</button>
       <button type="button" class="cancelbtn">Cancelar</button>
     </form>
@@ -462,13 +466,15 @@ function checkMoloni(){
     var qtd=document.getElementById("qtd").value;
     var cod_postal=document.getElementById("cod_postal").value;
     var pais=document.getElementById("country").value;
-console.log("REGISTER:",nome,morada,email,nif,cod_postal,pais);
+    var telefone=document.getElementById("telefone").value;
+    var cidade=document.getElementById("cidade").value;
+console.log("REGISTER:",nome,morada,email,nif,cod_postal,pais,telefone,cidade);
       return fetch(`http://localhost:8080/cliente`, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },          
         method: "POST",
-        body: `nome=${nome}&morada=${morada}&nif=${nif}&email=${email}&qtd=${qtd}&cod_postal=${cod_postal}&pais=${pais}`
+        body: `nome=${nome}&morada=${morada}&nif=${nif}&email=${email}&qtd=${qtd}&cod_postal=${cod_postal}&pais=${pais}&telefone=${telefone}&cidade=${cidade}`
       })
         .then(response => {
           if (!response.ok) {
