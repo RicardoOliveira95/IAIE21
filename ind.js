@@ -16,7 +16,7 @@ var Moloni=require('moloni');
 //app.use('/FrontEnd/static',express.static('static'));
 const dir=__dirname;
 console.log(__dirname)
-
+var id=0;
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
@@ -67,13 +67,13 @@ function getLastNumber(){
 		if (error)
 			return console.error(error);
 
-		var id=parseInt(result.number)+1;
+		id=parseInt(result.number)+1;
 		console.log("IDCLIENTE: ",id);
 	});
 	return id;
 }
 var idCli=getLastNumber();
-console.log("IDCliente: ",idCli);
+console.log("IDCliente7: ",idCli);
 
 var params = {
 	"company_id":"0","vat":"1","number":"45","name":"Ze","language_id":"2","address":"Braga","zip-code":"4710-441","city":"Braga","country_id":"1","email":"ze@mail.pt"
@@ -120,6 +120,54 @@ var params6={"company_id":"0","category_id":"4644949","type":"Serviço","name":"
 "at_product_category":"","exemption_reason":"","taxes":{},"suppliers":{},"warehouses":{},"warehouse_id":""};
 
 var category={"company_id":"0","parent_id":"0","name":"Servicos","description":"servicos","pos_enabled":""};
+
+var invoice={
+    'company_id': '0',
+    'date': '2023-12-23T00:00:00+0000',
+    'expiration_date': '2024-12-25T00:00:00+0000',
+    'document_set_id': '501359',
+    'customer_id': '59860969',
+    'our_reference': 'Nossa referência',
+    'your_reference': 'Referência Cliente',
+    'financial_discount': '10',
+    'salesman_id': '0',
+    'salesman_commision': '0',
+    'deduction_id':'0',
+    'special_discount': '0',
+    'associated_documents[0][associated_id]':'454439554',
+    'associated_documents[0][value]':'20',
+    'related_documents_notes':'',
+    'products[0][product_id]': '108087819',
+    'products[0][name]': 'Bilhete Concerto Jazz',
+    'products[0][summary]': '',
+    'products[0][qty]': '1',
+    'products[0][price]': '20',
+    'products[0][discount]': '0',
+    'products[0][order]': '1',
+    'products[0][exemption_reason]':'M01',
+    'products[0][warehouse_id]': '0',
+    'products[0][taxes][0][tax_id]': '2376294',
+    'products[0][taxes][0][value]': '23',
+    'products[0][taxes][0][order]': '1',
+    'products[0][taxes][0][cumulative]': '0',
+    'payments[0][payment_method_id]':'1476187',
+    'payments[0][date]':'',
+    'payments[0][value]':'15',
+    'payments[0][notes]':'',
+    'delivery_method_id': '1512402',
+    'delivery_datetime': '2021-12-25',
+    'delivery_departure_address': '4700-001',
+    'delivery_departure_city': 'Braga',
+    'delivery_departure_zip_code': '0',
+    'delivery_departure_country': '1',
+    'delivery_destination_address': '4200-440',
+    'delivery_destination_city': 'Lisboa',
+    'delivery_destination_zip_code': '1000-100',
+    'delivery_destination_country': '1',
+    'vehicle_id':'0',
+    'notes': 'Notas',
+    'status': '1'
+ };
 //SERVICOID->4644949
 /*moloni.customers('count', params, function (error, result) {
 	if (error)
@@ -231,6 +279,13 @@ app.post('/login',(req,res)=>{
 	}
 });
 */
+
+moloni.invoices('insert',invoice ,function (error, result) {
+	if (error)
+		return console.error(error);
+
+	console.log(result);
+});
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
