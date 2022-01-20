@@ -2,10 +2,7 @@ const app = require("../../ind");
 const router = require('express').Router();
 const bd = require("../../config/config.js");
 app.app.use('/',router);
-const categoryController = require('../controllers/categoryController');
-const clientController = require('../controllers/clientController');
 const eventController = require('../controllers/eventController');
-const organizationController = require('../controllers/organizationController');
 const ticketController = require('../controllers/ticketController');
 var idCliente=app.idCli+1;  //ID DO MOLONI
 
