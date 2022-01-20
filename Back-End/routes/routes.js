@@ -85,7 +85,6 @@ router.get('/clientes',function(req,res){
 	let sql='SELECT * from Evento'
 	bd.execSQLQuery(sql,res);
 })
-
 router.post('/cliente',function(req,res){
 	var nome=req.body.nome;
 	var email=req.body.email;
@@ -94,11 +93,22 @@ router.post('/cliente',function(req,res){
 	var cod_postal=req.body.cod_postal;
 	var pais=req.body.pais;
 	var qtd=req.body.qtd;
-	
+	var telefone=req.body.telefone;
+	var cidade=req.body.cidade;
+
+	app.moloni.customers('getLastNumber', function (error, result) {
+		if (error)
+			return console.error(error);
+
+		idCliente=parseInt(result.number)+1;
+		console.log("IDCliente: ",idCliente);
+	});
+	//Tirar o ultimo id
+	console.log("IDCLIENTE: ",idCliente);
 	var costumer = {
 	"company_id":"0","vat":`${nif}`,"number":`${idCliente}`,"name":`${nome}`,"language_id":"2","address":`${morada}`,"zip-code":`${cod_postal}`,
-	"city":"Braga","country_id":"1","email":"ze@mail.pt","website":"http://www.site.com","phone":"91999999","fax":"ns","contact_name":`#`,
-	"contact_email":`${email}`,"contact_phone":"253999999","notes":"notas","salesman_id":"1","maturity_date_id":"1",
+	"city":`${cidade}`,"country_id":"1","email":`${email}`,"website":"http://www.site.com","phone":`${telefone}`,"fax":"ns","contact_name":`#`,
+	"contact_email":`${email}`,"contact_phone":`${telefone}`,"notes":"notas","salesman_id":"1","maturity_date_id":"1",
 	"payment_day":"0","discount":"10","credit_limit":"100","qty_copies_document":"2","payment_method_id":"1",
 	"delivery_method_id":"2","field_notes":"notas de campo"}
 	console.log(costumer);
