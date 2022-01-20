@@ -3,12 +3,13 @@ const router = require('express').Router();
 const bd = require("../../config/config");
 app.app.use('/', router);
 const { json } = require('express');
-var reference=30;
-var access_token = '954aaf928886b331ed1dd0277b7c8d74ac817f3b';
+var reference=29;
 
 let serviceID=0;
+
 //ADICIONAR CATEGORIA
-app.moloni.productCategories('insert',app.category ,function (error, result) {
+
+app.moloni.productCategories('insert',category ,function (error, result) {
 	if (error)
 		return console.error(error);
 
@@ -28,8 +29,7 @@ function read(req, res) {
 };
 
 function post(req, res){
-
-
+	
 	var data=req.body.data_inicio;
 	var desc=req.body.descricao;
 	var tipo=req.body.tipo;
@@ -50,7 +50,7 @@ function post(req, res){
 	})
 	
 	  const post = [data, desc, tipo, preco];
-	  const sql1 = bd.connection.query('INSERT INTO Evento SET data_inicio = ?,descricao = ?,tipo = ?,preco = ?',post,
+	  const sql1 = bd.connection.query('INSERT INTO Evento SET data_inicio = ?,descricao = ?,tipo = ?',post,
 	  function (err, rows, fields) {
 		console.log(sql1.sql);
 		if(err){
@@ -61,45 +61,6 @@ function post(req, res){
 	}
 	)
 };
-
-https://api.moloni.pt/sandbox/products/insert/?access_token=[current_access_token]
-
-function addTicket(req, res){
-    link = `https://api.moloni.pt/v1/products/insert/?access_token=`+access_token;
-
-   
-    const name = req.name;
-    const reference = req.reference;
-    const price = req.price;
-    const unit_id = req.unit_id;
-
-    router.post({
-        url: link,
-        form: {
-            company_id: 0,
-            category_id: 92977,
-            type: 2,
-            name: name,
-            reference: reference,
-            price: price,
-            unit_id: unit_id,
-            has_stock: 1,
-            stock: 100,
-            at_product_category: 'T'
-        },
-        function (err, httpResponse, body) {
-        if (err) {
-            console.log(err);
-            return res.status(500).end();
-        }
-        else {
-            data = JSON.parse(body);
-            res.json(data);
-        }
-    }    
-    });
-}
-
 /*
 router.delete('/evento/:id',function(req,res){
 	const update=parseInt(req.params.id)
@@ -134,7 +95,5 @@ router.put('/evento/:id',function(req,res){
 */
 module.exports = {
     read: read,
-	post: post,
-	addTicket: addTicket
-	
+	post: post
 }
