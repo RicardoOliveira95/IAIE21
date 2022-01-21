@@ -5,6 +5,7 @@ var cors = require('cors');
 var request = require('request');
 const bd = require("./config/config.js");
 const app = express();
+const router = express.Router();
 const port = process.env.PORT;
 app.use(express.static('./FrontEnd'))
 app.use(bp.json())
