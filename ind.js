@@ -46,26 +46,33 @@ app.use('/Logo.png', express.static(__dirname + '/FrontEnd/static/Logo.png'))
 app.use('/Product A.png', express.static(__dirname + '/FrontEnd/static/Product A.png'))
 app.use('/Product B.png', express.static(__dirname + '/FrontEnd/static/Product B.png'))
 
-request({
-  url: 'https://identity.primaverabss.com/core/connect/token',
-  method: 'POST',
-  auth: {
-    user: 'IAIEPL7G1', // TODO : put your application client id here
-    pass: '36067f37-825c-4d74-9201-082c3728c788' // TODO : put your application client secret here
-  },
-  form: {
-    'grant_type': 'client_credentials',
-    'scope': 'application',
-  }
-}, function(err, res) {
-  if (res) {
-    var json = JSON.parse(res.body);
-    console.log("Access Token:", json.access_token);
-    
-  }
-  else {
-    console.log("Could not obtain acess token.");
-  }
+// access token
+router.post('/getToken', function(req, res) {
+  var options = {
+    'method': 'POST',
+    'url': "https://identity.primaverabss.com/core/connect/token",
+    'headers': {
+      'Content-Type': ['application/x-www-form-urlencoded', 'application/x-www-form-urlencoded'],
+      'Authorization': 'Basic SVNJRk9PRDo2MWMyNzUyYS1kNjIxLTQ1ZWYtODUxOC01YjQxOGI5ZDViYjc='
+    },
+    form: {
+      'client_id': "IAIEPL7G1",
+      'client_secret': "36067f37-825c-4d74-9201-082c3728c788",
+      'grant_type': 'client_credentials',
+      'scope': 'application'
+    }
+  };
+  request(options, function(error, response) {
+    if (error) {
+      throw new Error(error);
+      console.log(response.body)
+    }
+    else {
+      let result = JSON.parse(response.body);
+      saveTokens(result.access_token);
+      console.log("jasmin auth ok");
+    }
+  });
 });
 
 var moloni=new Moloni({
