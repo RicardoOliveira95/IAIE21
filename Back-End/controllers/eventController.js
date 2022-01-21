@@ -9,7 +9,7 @@ let serviceID=0;
 
 //ADICIONAR CATEGORIA
 
-app.moloni.productCategories('insert',category ,function (error, result) {
+app.moloni.productCategories('insert', app.category ,function (error, result) {
 	if (error)
 		return console.error(error);
 
@@ -50,7 +50,7 @@ function post(req, res){
 	})
 	
 	  const post = [data, desc, tipo, preco];
-	  const sql1 = bd.connection.query('INSERT INTO Evento SET data_inicio = ?,descricao = ?,tipo = ?',post,
+	  const sql1 = bd.connection.query('INSERT INTO Evento SET data_inicio = ?,descricao = ?,tipo = ?,preco = ?',post,
 	  function (err, rows, fields) {
 		console.log(sql1.sql);
 		if(err){

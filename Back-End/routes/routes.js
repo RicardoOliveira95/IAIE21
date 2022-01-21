@@ -47,7 +47,6 @@ router.get('/cliente/:id',function(req,res){
 
 router.get('/eventos', eventController.read);
 router.post('/evento', eventController.post);
-router.post('/addTicket',eventController.addTicket);
 router.get('/tickets', ticketController.read);
 router.post('/ticket', ticketController.post);
 

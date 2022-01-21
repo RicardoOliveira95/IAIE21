@@ -1,52 +1,69 @@
+<!DOCTYPE html>
 <html lang="pt-BR" data-lang="pt-BR" crm-lang="pt-BR" crm-lcid="1046" 
-	same-site-mode="None">
+	same-site-mode="None" >
 <head>
-	<link rel="stylesheet" href="./css/tbl.css">
-	<link rel="stylesheet" type="text/css" href="./css/form.css">
-	<link rel="stylesheet" href="./css/account.css">
-	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-	<link rel="stylesheet" href="./css/glyphicons-font-awesome-migrate.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/portalbasictheme.css">
-	<link rel="stylesheet" type="text/css" href="./css/theme.css">
-	<link rel="stylesheet" type="text/css" href="./css/sb-admin.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-    crossorigin="anonymous">
-
-		
-			
-		<link href="./css/bootstrap.min.css" rel="stylesheet" />
-
-		<link href="./css/glyphicons-font-awesome-migrate.min.css" rel="stylesheet"/>
-
-		<link href="https://content.powerapps.com/resource/powerappsportal/dist/preform.bundle-39edee5cb6.css" rel="stylesheet" />
+		<meta charset="utf-8" /><meta name="viewport" content="width=device-width,&#32;initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script type="text/javascript">
+				
+</script>
+	<title>
 	
-		<link href="./css/theme.css" rel="stylesheet" />
-		
-		<link href="./css/portalbasictheme.css" rel="stylesheet" />
-		
-		<link href="./css/bootstrap.min.css" rel="stylesheet" />
-
-		<link href="./css/glyphicons-font-awesome-migrate.min.css" rel="stylesheet"/>
-
-		<link href="https://content.powerapps.com/resource/powerappsportal/dist/preform.bundle-39edee5cb6.css" rel="stylesheet" />
-
-
-		
-		
-        <!--[if lt IE 9]>
-                <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-            <![endif]-->
-        
-        <!--[if lt IE 10]>
-                <script src="~/js/formdata.js"></script>
-            <![endif]-->
-        
-<style type="text/css">
+		Consultar eventos
+</title>
+		<link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/sb-admin.css">	
+		<script src="/_resources/getresourcemanager?lang=pt-BR"></script>
 	
-</style>     
+	<script type="text/javascript">
+		// Refresh all powerBI Iframes on Login in one Iframe
+		window.addEventListener('message', function (event) {
+			if (event && event.data && event.data == 'refreshPowerBI') {
+				$("iframe.powerbi").each(function () {
+					this.src = this.src;
+				});
+			}
+		});
+
+		// Fix for incorrect viewport width setting in IE 10 on Windows Phone 8.
+		if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+			var msViewportStyle = document.createElement("style");
+			msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));
+			document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+		}
+	</script>
+        <link rel="stylesheet" href="./css/tbl.css">
+        <link rel="stylesheet" type="text/css" href="./css/form.css">
+        <link rel="stylesheet" href="./css/account.css">
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/glyphicons-font-awesome-migrate.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/portalbasictheme.css">
+        <link rel="stylesheet" type="text/css" href="./css/theme.css">
+        <link rel="stylesheet" type="text/css" href="./css/sb-admin.css">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+
+        <link href="./css/bootstrap.min.css" rel="stylesheet" />
+
+        <link href="./css/glyphicons-font-awesome-migrate.min.css" rel="stylesheet"/>
+
+        <link href="https://content.powerapps.com/resource/powerappsportal/dist/preform.bundle-39edee5cb6.css" rel="stylesheet" />
+
+        <link href="./css/theme.css" rel="stylesheet" />
+
+        <link href="./css/portalbasictheme.css" rel="stylesheet" />
+
+        <link href="./css/bootstrap.min.css" rel="stylesheet" />
+
+        <link href="./css/glyphicons-font-awesome-migrate.min.css" rel="stylesheet"/>
+
+        <link href="https://content.powerapps.com/resource/powerappsportal/dist/preform.bundle-39edee5cb6.css" rel="stylesheet" />
+  
+        <link href="./css/theme.css" rel="stylesheet" />
+        
+        <link href="./css/portalbasictheme.css" rel="stylesheet" />
 </head>
+
 <body data-sitemap-state="/"
 	data-dateformat="dd/MM/yyyy"
 	data-timeformat="HH:mm"
@@ -72,13 +89,10 @@
 			}
 		}
 	</script>
-	
 
 	
-	<!--CODIGO-->
-	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+		
 
-   
 <div class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="skip-to-content"><a href="#mainContent">Pular para o conteúdo principal</a></div><div class="container">
         <div class="navbar-header">
@@ -175,109 +189,98 @@
     </div>
 </div>
 
-    </nav>
 
-    <div id="wrapper">
+<div id="content-wrapper">
 
-      <!-- Sidebar -->
-      <ul class="sidebar navbar-nav">      
-        <li class="nav-item">
-          <a class="nav-link" href="participants.html">
-              <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Eventos</span></a>
-        </li>
-        
-      </ul>
-    <div id="content-wrapper">
+    <div class="container-fluid">
+        <!--<h1><b>Lista de Eventos</b></h1><br>-->
+        <h1 class="display-3">Eventos</h1>
+        <p class="lead">Consulta de Eventos</p>
+        <hr class="my-2">
 
-        <div class="container-fluid">
-			<!--<h1><b>Lista de Eventos</b></h1><br>-->
-			<h1 class="display-3">Eventos</h1>
-            <p class="lead">Consulta de Eventos</p>
-            <hr class="my-2">
-
-	<div class="table-responsive">
-		<table id="tabServ" class="rtable">
-	</div>
+<div class="table-responsive">
+    <table id="tabServ" class="rtable">
+</div>
 </div></div>
 
 
-	<script type="text/javascript">
-		var servicos;
-		window.onload=()=>{
-			console.log("HERE")
-			const tabServ=document.getElementById("tabServ")
+<script type="text/javascript">
+    var servicos;
+    window.onload=()=>{
+        console.log("HERE")
+        const tabServ=document.getElementById("tabServ")
 
-			const renderServs=async()=>{
-				console.log("FUNCTION")
-				let strHtml=`
-				<table id="tabServ" class="rtable">
-  			<thead>
-    			<tr>
-      				<th>ID</th>
-      				<th>Tipo</th>
- 					<th>Descricao</th>
- 					<th>Preco</th>
-					<th>Data</th>
- 					<th>Accao</th>
- 					<th>Accao</th>
-     			</tr>
-    		</thead>
-    		</table>`
-   		const response=await fetch('http://localhost:8080/eventos');
+        const renderServs=async()=>{
+            console.log("FUNCTION")
+            let strHtml=`
+            <table id="tabServ" class="rtable">
+          <thead>
+            <tr>
+                  <th>ID</th>
+                  <th>Tipo</th>
+                 <th>Descricao</th>
+                 <th>Preco</th>
+                <th>Data</th>
+                 <th>Accao</th>
+                 <th>Accao</th>
+             </tr>
+        </thead>
+        </table>`
+       const response=await fetch('http://localhost:8080/eventos');
 
-   		eventos = await response.json();
+       eventos = await response.json();
 
-   		for(const evento of eventos){
-   			var dateEv=new Date(evento.data_inicio.substring(0,10));
-   				var today = new Date();
-   			dateEv = dateEv.getFullYear()+'-'+(dateEv.getMonth()+1)+'-'+dateEv.getDate();
-	const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-		
-   			if(dateEv>date)
-				{
-   				strHtml+=`<tr><td>${evento.idEvento}</td>
-   				<td>${evento.tipo}</td>
-   				<td>${evento.descricao}</td>
-   				<td>${evento.preco}€</th>
-   				<td>${evento.data_inicio.substring(0,10)}</th>
-   				<td><button onclick="deleteServico(${evento.idEvento})">DELETE</button></td>
-   				<td><button onclick="window.location.href='http://localhost:8080/cliente/${evento.idEvento}';">BUY</button></td></tr>`
-			}}
-			strHtml+='</tbody></table>'
-			tabServ.innerHTML=strHtml
-   		}
+       for(const evento of eventos){
+           var dateEv=new Date(evento.data_inicio.substring(0,10));
+               var today = new Date();
+           dateEv = dateEv.getFullYear()+'-'+(dateEv.getMonth()+1)+'-'+dateEv.getDate();
+const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    
+           if(dateEv>date)
+            {
+               strHtml+=`<tr><td>${evento.idEvento}</td>
+               <td>${evento.tipo}</td>
+               <td>${evento.descricao}</td>
+               <td>${evento.preco}€</th>
+               <td>${evento.data_inicio.substring(0,10)}</th>
+               <td><button onclick="deleteServico(${evento.idEvento})">DELETE</button></td>
+               <td><button onclick="window.location.href='http://localhost:8080/cliente/${evento.idEvento}';">BUY</button></td></tr>`
+        }}
+        strHtml+='</tbody></table>'
+        tabServ.innerHTML=strHtml
+       }
 
-   		renderServs();
-		}
+       renderServs();
+    }
 
-		const deleteServico=async(id)=>{
-			return fetch(`http://localhost:8080/eventos/${id}`, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },          
-        method: "DELETE",
-        body: ``
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(response.statusText);
-          }
-          swal('Removido!', 'O evento foi removido da lista.', 'success');
-          //renderServs();
-          document.location.reload();
-          return response.json();
-        })
-        .catch(error => {
-          swal.showValidationError(`Pedido falhado: ${error}`);
-        });
+    const deleteServico=async(id)=>{
+        return fetch(`http://localhost:8080/eventos/${id}`, {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },          
+    method: "DELETE",
+    body: ``
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      swal('Removido!', 'O evento foi removido da lista.', 'success');
+      //renderServs();
+      document.location.reload();
+      return response.json();
+    })
+    .catch(error => {
+      swal.showValidationError(`Pedido falhado: ${error}`);
+    });
 
-			/*const response=await fetch(`http://localhost:8080/eventos/${id}`,{method: "DELETE"});*/
-		}
-	</script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        /*const response=await fetch(`http://localhost:8080/eventos/${id}`,{method: "DELETE"});*/
+    }
+</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.9/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.9/sweetalert2.all.min.js%22%3E"></script>
+
 </body>
 </html>
