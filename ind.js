@@ -2,6 +2,7 @@ const express = require("express");
 const bp = require("body-parser");
 const session = require("express-session");
 var cors = require('cors');
+var request = require('request');
 const bd = require("./config/config.js");
 const app = express();
 const port = process.env.PORT;
