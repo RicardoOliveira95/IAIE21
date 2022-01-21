@@ -48,7 +48,7 @@ app.use('/Product A.png', express.static(__dirname + '/FrontEnd/static/Product A
 app.use('/Product B.png', express.static(__dirname + '/FrontEnd/static/Product B.png'))
 
 // access token
-router.post('/getToken', function(req, res) {
+/*router.post('/getToken', function(req, res) {
   var options = {
     'method': 'POST',
     'url': "https://identity.primaverabss.com/core/connect/token",
@@ -74,7 +74,7 @@ router.post('/getToken', function(req, res) {
       console.log("jasmin auth ok");
     }
   });
-});
+});*/
 
 var moloni=new Moloni({
 	client_id: 'pl7g1iaie',
