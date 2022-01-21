@@ -58,7 +58,7 @@ router.post('/getToken', function(req, res) {
     },
     form: {
       'client_id': "IAIEPL7G1",
-      'client_secret': "36067f37-825c-4d74-9201-082c3728c788",
+      'client_secret': "24661ff6-09f8-4cf8-b3ba-7d94154e126a",
       'grant_type': 'client_credentials',
       'scope': 'application'
     }
