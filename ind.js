@@ -199,7 +199,7 @@ moloni.invoices('insert',invoice ,function (error, result) {
 	console.log(result);
 });
 
-//app.listen(port, ()=> console.log('Running at port ' + port));
-app.listen(8080);
+app.listen(port, ()=> console.log('Running at port ' + port));
+//app.listen(8080);
 module.exports = {app:app,dir:dir,moloni:moloni,category:category,idCli:idCli};
 const routes = require("./Back-End/routes/routes")
