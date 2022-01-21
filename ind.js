@@ -50,8 +50,8 @@ request({
   url: 'https://identity.primaverabss.com/core/connect/token',
   method: 'POST',
   auth: {
-    user: '<IAIEPL7G1>', // TODO : put your application client id here
-    pass: '<36067f37-825c-4d74-9201-082c3728c788>' // TODO : put your application client secret here
+    user: 'IAIEPL7G1', // TODO : put your application client id here
+    pass: '36067f37-825c-4d74-9201-082c3728c788' // TODO : put your application client secret here
   },
   form: {
     'grant_type': 'client_credentials',
