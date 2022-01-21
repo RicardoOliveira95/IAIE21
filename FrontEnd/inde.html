@@ -229,7 +229,7 @@
 <div class="row sectionBlockLayout" style="display: flex; flex-wrap: wrap; text-align: center; min-height: auto; padding: 45px 8px; margin: 0px;">
     <div class="container" style="display: flex; flex-wrap: wrap;">
         <div class="col-md-12 columnBlockLayout" style="display: flex; flex-direction: column; padding-bottom: 20px; width: 100%;">
-            <h2>Recursos principais</h2>
+            <h2>Sponsors</h2>
         </div>
         <div class="col-md-4 columnBlockLayout" style="display: flex; flex-direction: column;">
             <img src="./static/Edit.png" alt="Editar imagem" style="width: 130px; height: auto; margin-left: auto; margin-right: auto;">
@@ -269,7 +269,8 @@
 </div>
 
 
-	
+	<div class="container-fluid" id="googleMap">
+        <div class="row">
 		
 
 	
@@ -338,7 +339,44 @@
 			}
 		}
 	</script>
-	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcYng9pBfj_LmDthyiydpfyy3bftchOmg&callback=myMap"></script> 
+	<script type="text/javascript">
+     window.onload = function() {
+        //console.log("MAP");
+     function myMap() {
+
+  // Ponto no mapa a localizar (cidade do Braga)
+  const braga = new google.maps.LatLng(41.5607221  , -8.4246528,15)
+
+  // Propriedades do mapa
+  const mapProp = {
+    center:braga, 
+    zoom:12, 
+    scrollwheel:false, 
+    draggable:false, 
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  }
+
+  // Mapa
+  const map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  
+    // Janela de informação (info window)
+  const infowindow = new google.maps.InfoWindow({
+    content: "É aqui a WebConference!"
+  })
+
+  // Marcador
+  const marker = new google.maps.Marker({
+    position:porto,
+    map:map,
+    title:"WebConference"
+  })
+
+  // Listener
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  })   } myMap();}
+    </script>
 		
 	
 </body>
