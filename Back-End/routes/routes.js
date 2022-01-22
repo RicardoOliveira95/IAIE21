@@ -5,6 +5,7 @@ app.app.use('/',router);
 const eventController = require('../controllers/eventController');
 const ticketController = require('../controllers/ticketController');
 var idCliente=app.idCli+1;  //ID DO MOLONI
+var logged=true;
 
 router.get('/',function (req, res){
 	console.log("IDCliente: ",idCliente);
@@ -118,6 +119,59 @@ router.post('/cliente',function(req,res){
 		console.log(result);
 	});
 	idCliente+=1;
+});
+//LOGINS
+router.post('/sign-up',function(req,res){
+    if(req.method=="POST"){
+        var post = req.body;
+        var name = post.username;
+        var pass = post.password;
+        var salt = 10;
+        
+        let hash = bcrypt.hashSync(pass,salt);
+        
+        var query = bd.connection.query('INSERT INTO Admin (username, password) VALUES (?, ?)',[name,hash],function(err,result){
+            var message = "Your account was successfully created!";
+            console.log(hash);
+            res.send(message);
+        });
+    }else{
+        res.sendFile('signup');
+    }
+});
+
+router.post('/auth',function(req,res){
+    console.log("HERE")
+	var username = req.body.username;
+	var password = parseInt(req.body.password);
+	console.log(req.body);
+	if(username&&password){
+		bd.connection.query('SELECT * FROM Admin WHERE Nome = ? AND Password = ?', [username, password], function(error,results,fields){
+			if(results.length>0){
+				req.session.loggedIn=true;
+				logged=true;
+				req.session.user=username;
+				console.log(username+password," logged in!");
+				res.redirect('/');
+			} else{
+				res.send('Incorrect username or password!');
+			}
+			res.end();
+		});
+	}else{
+		res.send('Please enter username and password!');
+		res.end();
+	}
+});
+
+router.post('logout',function(req, res, err) {
+    req.session.destroy(function(err){
+        if(err){
+            console.log(err);
+        }
+        logged=false;
+        res.send("LOGOUT");
+    });
 });
 
 module.exports=router;
