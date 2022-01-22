@@ -55,7 +55,10 @@ router.post('/ticket', ticketController.post);
 
 
 router.get('/regEvento',function(req,res){
-	res.sendFile(app.dir+"/FrontEnd/regEventos1.html");
+	if(req.session.loggedIn||logged){
+		console.log("REGISTAR EVENTO PAGE");
+	res.sendFile(app.dir+"/FrontEnd/regEventos1.html");}
+	else{res.sendFile(app.dir+'/FrontEnd/login.html');}
 });
 
 router.get('/about',function(req,res){
