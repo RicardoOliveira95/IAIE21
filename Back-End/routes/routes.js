@@ -6,6 +6,7 @@ const eventController = require('../controllers/eventController');
 const ticketController = require('../controllers/ticketController');
 var idCliente=app.idCli+1;  //ID DO MOLONI
 var logged=true;
+//meter false para fazer o login (user->admin,pw->12345)
 
 router.get('/',function (req, res){
 	console.log("IDCliente: ",idCliente);
