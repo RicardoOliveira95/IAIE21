@@ -30,6 +30,7 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.8.1",
     "handlebars": "4.7.7",
+    "html2pdf.js": "^0.10.1",
     "micromatch": "4.0.4",
     "moloni": "^0.0.6",
     "mysql": "^2.18.1",
@@ -37,7 +38,7 @@
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "request": "^2.85.0",
+    "request": "^2.88.2",
     "sequelize": "^6.3.5"
   }
 }
