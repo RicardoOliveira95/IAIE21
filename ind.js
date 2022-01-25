@@ -126,8 +126,8 @@ var invoice={
     'company_id': '0',
     'date': '2023-12-23T00:00:00+0000',
     'expiration_date': '2024-12-25T00:00:00+0000',
-    'document_set_id': '502269',
-    'customer_id': '59950947',
+    'document_set_id': '503079',
+    'customer_id': '60063144',
     'our_reference': 'Nossa referência',
     'your_reference': 'Referência Cliente',
     'financial_discount': '10',
@@ -138,19 +138,17 @@ var invoice={
     'associated_documents[0][associated_id]':'0',
     'associated_documents[0][value]':'0',
     'related_documents_notes':'',
-    'products[0][product_id]': '108480898',
-    'products[0][name]': 'Bilhete Concerto Teste',
+    'products[0][product_id]': '108825891',
+    'products[0][name]': 'Bilhete Concerto Teste5',
     'products[0][summary]': '',
     'products[0][qty]': '1',
     'products[0][price]': '10',
-    'products[0][measurement_unit][0][unit_id]': '1875893',
-    'products[0][measurement_unit][0][unit_name]': 'Unidade',
-    'products[0][measurement_unit][0][unit_short_name]': 'Uni',
+    'products[0][unit_id]': '1878708',
     'products[0][discount]': '0',
     'products[0][order]': '1',
     'products[0][exemption_reason]':'M01',
     'products[0][warehouse_id]': '0',
-    'products[0][taxes][0][tax_id]': '2402327',
+    'products[0][taxes][0][tax_id]': '2404002',
     'products[0][taxes][0][value]': '23',
     'products[0][taxes][0][order]': '1',
     'products[0][taxes][0][cumulative]': '0',
@@ -172,7 +170,7 @@ var invoice={
     'notes': 'Notas',
     'status': '1'
  };
-//IDFACTURA->461419048
+//IDFACTURA->461866206
 
 app.use(session({
 	secret: 'pnsbn',
@@ -195,12 +193,20 @@ app.use(function(req,res,next){
 	next()
 })
 
-
-moloni.invoices('insert',invoice ,function (error, result) {
+//FACTURA
+/*moloni.invoices('insert',invoice ,function (error, result) {
 	if (error)
 		return console.error(error);
 
 	console.log(result);
+});IDFACTURA->461866206*/
+
+//GERAR LINK DO PDF
+moloni.documents('getPDFLink',{"document_id":"461866206"},function(error,result){
+  if (error)
+    return console.error(error);
+
+  console.log(result.url);  //LINK DA FACTURA
 });
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
