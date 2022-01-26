@@ -16,3 +16,13 @@ window.onload = function () {
             html2pdf().from(invoice).set(opt).save();
         })
 }
+
+function getLink(id){
+    moloni.documents('getPDFLink',{"document_id": +id},function(error,result){
+        if (error)
+          return console.error(error);
+      
+        console.log(result.url);
+        alert(result.url)  //LINK DA FACTURA
+      });
+}

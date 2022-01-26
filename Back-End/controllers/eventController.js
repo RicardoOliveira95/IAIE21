@@ -4,7 +4,9 @@ const bd = require("../../config/config");
 app.app.use('/', router);
 const { json } = require('express');
 var reference=31;
-
+var nome = "";
+var preco_bilhete = 0;
+var id_product = 0;
 let serviceID=0;
 
 //ADICIONAR CATEGORIA
@@ -42,10 +44,14 @@ function post(req, res){
 "taxes":{"tax_id":"2375396","value":"2.3","order":"3","cumulative":"0"},
 "suppliers":{"supplier_id":"","cost_price":""},"warehouses":{"warehouse_id":"","stock":""},"warehouse_id":""};
 
+	nome = desc;
+    preco_bilhete = preco;
+
 	app.moloni.products("insert",product,function(error,result){
 		if(error)
 			return console.error(error);
 		
+		id_product = result.product_id;
 		console.log(result);
 	})
 	
@@ -95,5 +101,8 @@ router.put('/evento/:id',function(req,res){
 */
 module.exports = {
     read: read,
-	post: post
+	post: post,
+	id_product: id_product,
+	nome: nome,
+	preco_bilhete: preco_bilhete
 }

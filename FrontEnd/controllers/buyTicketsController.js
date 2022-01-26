@@ -29,7 +29,7 @@ let idEvento = urlParams.get('id_evento');
                 console.log(dados);
             })
         }
-        alert("Bilhetes comprados com sucesso")
+        getLink(result.document_id)
     } catch(err){
         console.log({msg: err});
     }
