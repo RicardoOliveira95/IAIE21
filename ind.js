@@ -120,7 +120,7 @@ moloni.customers('count', params, function (error, result) {
 });
 //FUNCOES DO MOLONI
 
-var category={"company_id":"0","parent_id":"0","name":"Servicos","description":"servicos","pos_enabled":""};
+var category={"company_id":"0","parent_id":"0","name":"Servicos","description":"servico cultural","pos_enabled":""};
 
 var invoice={
     'company_id': '0',
@@ -208,6 +208,13 @@ moloni.documents('getPDFLink',{"document_id":"461866206"},function(error,result)
 
   console.log(result.url);  //LINK DA FACTURA
 });
+
+/*moloni.products('getByName',{'name':'Concerto Teste6'},function(error,result){
+  if(error)
+    return console.error(error);
+
+  console.log("NAME: ",result[1].name);
+})*/
 
 //app.listen(port, ()=> console.log('Running at port ' + port));
 app.listen(8080);
