@@ -159,8 +159,8 @@ router.post('/cliente',function(req,res){
 
 			var invoice={
         'company_id': '0',
-        'date': '2024-12-24',
-        'expiration_date': '2024-12-25T00:00:00+0000',
+        'date': '2024-12-29',
+        'expiration_date': '2024-12-29T00:00:00+0000',
         'document_set_id': '504207',
         'customer_id': `${idCliente}`,
         'our_reference': "",
