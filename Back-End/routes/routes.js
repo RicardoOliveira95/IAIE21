@@ -4,8 +4,9 @@ const bd = require("../../config/config.js");
 app.app.use('/',router);
 const eventController = require('../controllers/eventController');
 const ticketController = require('../controllers/ticketController');
-var idCliente=app.idCli+1;  //ID DO MOLONI
+var idCliente=app.idCli+29;  //ID DO MOLONI
 var logged=true;
+var id_evento=0;
 //meter false para fazer o login (user->admin,pw->12345)
 
 router.get('/',function (req, res){
@@ -42,6 +43,9 @@ router.get('/clientes',function(req,res){
 })
 
 router.get('/cliente/:id',function(req,res){
+	const update=parseInt(req.params.id)
+	idEvento=update;
+	//console.log("IDEVT: ",idEvento);
 	res.sendFile(app.dir+'/FrontEnd/cliente.html')
 })
 
@@ -66,8 +70,25 @@ router.get('/about',function(req,res){
 	res.sendFile(__dirname+'/FrontEnd/about.html');
 })
 
+router.get('/eventos/:id?', function(req, res){
+	const update=parseInt(req.params.id)
+	idEvento=update;
+	const query=bd.connection.query('SELECT * FROM Evento WHERE idEvento=?',update,function(err,rows,fields){
+		console.log(query.sql)
+
+		if(err){
+			console.log(err)
+		}
+		else
+			res.send(rows)
+	});
+	//res.end();
+})
+    
+
 router.delete('/eventos/:id',(req,res)=>{
 	const update=parseInt(req.params.id)
+	idEvento=update;
 	const query=bd.connection.query('DELETE FROM Evento WHERE idEvento=?',update,function(err,rows,fields){
 		console.log(query.sql)
 
@@ -99,16 +120,20 @@ router.post('/cliente',function(req,res){
 	var qtd=req.body.qtd;
 	var telefone=req.body.telefone;
 	var cidade=req.body.cidade;
+	var nome_evt=req.body.nome_evt;
+	//console.log("ID-evt: ",parseInt(req.params.id));
 
-	app.moloni.customers('getLastNumber', function (error, result) {
+	/*app.moloni.customers('getLastNumber', function (error, result) {
 		if (error)
 			return console.error(error);
 
 		idCliente=parseInt(result.number)+1;
 		console.log("IDCliente: ",idCliente);
-	});
+	});*/
 	//Tirar o ultimo id
 	console.log("IDCLIENTE: ",idCliente);
+	console.log("Nome evento: ",nome_evt);
+
 	var costumer = {
 	"company_id":"0","vat":`${nif}`,"number":`${idCliente}`,"name":`${nome}`,"language_id":"2","address":`${morada}`,"zip-code":`${cod_postal}`,
 	"city":`${cidade}`,"country_id":"1","email":`${email}`,"website":"http://www.site.com","phone":`${telefone}`,"fax":"ns","contact_name":`#`,
@@ -120,15 +145,23 @@ router.post('/cliente',function(req,res){
 		if (error)
 			return console.error(error);
 
+		idCliente = result.customer_id;
+        console.log(result.customer_id,idCliente)
 		console.log(result);
-	});
-	idCliente+=1;
 
-	var invoice={
+		app.moloni.products('getByName',{'name':nome_evt},function(error,result){
+		if(error)
+			console.log(error)
+		else{
+			console.log(result);
+			var prod_id=result[0].product_id;
+			console.log("ID do produto: ",prod_id)
+
+			var invoice={
         'company_id': '0',
-        'date': '2023-12-24',
+        'date': '2024-12-24',
         'expiration_date': '2024-12-25T00:00:00+0000',
-        'document_set_id': '503079',
+        'document_set_id': '504207',
         'customer_id': `${idCliente}`,
         'our_reference': "",
         'your_reference': "",
@@ -140,17 +173,17 @@ router.post('/cliente',function(req,res){
         'associated_documents[0][associated_id]':'0',
         'associated_documents[0][value]':'0',
         'related_documents_notes':'',
-        'products[0][product_id]': `${eventController.id_product}`,
-        'products[0][name]': `${eventController.nome}`,
+        'products[0][product_id]': `${result[0].product_id}`,
+        'products[0][name]': `${nome_evt}`,
         'products[0][summary]': '',
         'products[0][qty]': '1',
-        'products[0][price]': `${eventController.preco_bilhete}`,
-        'products[0][unit_id]': '1878708',
+        'products[0][price]': `${result[0].price}`,
+        'products[0][unit_id]': '1882336',
         'products[0][discount]': '0',
         'products[0][order]': '1',
         'products[0][exemption_reason]':'M01',
         'products[0][warehouse_id]': '0',
-        'products[0][taxes][0][tax_id]': '2404002',
+        'products[0][taxes][0][tax_id]': '2405778',
         'products[0][taxes][0][value]': '23',
         'products[0][taxes][0][order]': '1',
         'products[0][taxes][0][cumulative]': '0',
@@ -172,20 +205,23 @@ router.post('/cliente',function(req,res){
         'notes': 'Notas',
         'status': '1'
      };
-	 var id_cliente = 0;
-    app.moloni.invoices('insert',invoice,function(error,result){
+
+		app.moloni.invoices('insert',invoice,function(error,result){
 		console.log("Cheguei");
         if (error)
           return console.error(error);
-      
-		console.log(eventController.id_product);
-		console.log(eventController.preco_bilhete);
-		console.log(eventController.nome);
-		//id_cliente = result.customer_id;
-        console.log(idCliente)
+      	
+      	//console.log("ID: ",idEvento)
 		console.log(result);
 		  //LINK DA FACTURA
       });
+		}
+	})
+
+
+	});
+	//idCliente+=1;
+	 //var id_cliente = 0;
 });
 //LOGINS
 router.post('/sign-up',function(req,res){
@@ -239,6 +275,14 @@ router.post('logout',function(req, res, err) {
         logged=false;
         res.send("LOGOUT");
     });
+});
+
+router.get('/eventos1',function(req,res){
+	app.moloni.products('getAll',{'category_id':'4773567'},function(error,result){
+		if (error)
+			return console.error(error);
+		console.log(result);
+	})
 });
 
 module.exports=router;
