@@ -425,9 +425,10 @@ button:hover {
     const renderEvent=async()=>{
     const response=await fetch(`http://localhost:8080/eventos/${id}`);
     evento=await response.json();
-    console.log(evento[0]);
-    id=evento[0].idEvento;
+    console.log(evento[0].descricao);
+    //id=evento[0].nome;
     price=evento[0].preco;
+    nome_evt=evento[0].descricao;
     titulo.innerHTML=evento[0].descricao;
     subTitle.innerHTML=evento[0].descricao;}
 
@@ -474,7 +475,7 @@ console.log("REGISTER:",nome,morada,email,nif,cod_postal,pais,telefone,cidade);
           "Content-Type": "application/x-www-form-urlencoded"
         },          
         method: "POST",
-        body: `nome=${nome}&morada=${morada}&nif=${nif}&email=${email}&qtd=${qtd}&cod_postal=${cod_postal}&pais=${pais}&telefone=${telefone}&cidade=${cidade}`
+        body: `nome=${nome}&morada=${morada}&nif=${nif}&email=${email}&qtd=${qtd}&cod_postal=${cod_postal}&pais=${pais}&telefone=${telefone}&cidade=${cidade}&nome_evt=${nome_evt}`
       })
         .then(response => {
           if (!response.ok) {
