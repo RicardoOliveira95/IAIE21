@@ -18,7 +18,7 @@ var Moloni=require('moloni');
 //app.use('/FrontEnd/static',express.static('static'));
 const dir=__dirname;
 console.log(__dirname)
-var id=180;
+var id=0;
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
@@ -200,14 +200,6 @@ app.use(function(req,res,next){
 
 	console.log(result);
 });IDFACTURA->461866206*/
-
-//GERAR LINK DO PDF
-moloni.documents('getPDFLink',{"document_id":"461866206"},function(error,result){
-  if (error)
-    return console.error(error);
-
-  console.log(result.url);  //LINK DA FACTURA
-});
 
 /*moloni.products('getByName',{'name':'Concerto Teste6'},function(error,result){
   if(error)
