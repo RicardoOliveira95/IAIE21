@@ -3,7 +3,7 @@ const router = require('express').Router();
 const bd = require("../../config/config");
 app.app.use('/', router);
 const { json } = require('express');
-var reference=90;
+var reference=82;
 var nome = "";
 var preco_bilhete = 0;
 var id_product = 0;

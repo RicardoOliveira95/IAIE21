@@ -141,6 +141,98 @@ router.post('/cliente',function(req,res){
 	"payment_day":"0","discount":"10","credit_limit":"100","qty_copies_document":"2","payment_method_id":"1",
 	"delivery_method_id":"2","field_notes":"notas de campo"}
 	console.log(costumer);
+
+	app.moloni.customers('getByVat',{"vat":`${nif}`},function(error,result){
+  if (error)
+    return console.error(error);
+  
+  console.log("VAT GET: ",result[0].customer_id);
+  if(result.length>0){
+  app.moloni.customers('update',{"customer_id":result[0].customer_id},function(error,result){
+    if (error)
+      return console.error(error);
+
+  idCliente=result.customer_id;
+  console.log("::::::::::CUSTOMER->",idCliente)
+  app.moloni.products('getByName',{'name':nome_evt},function(error,result){
+		if(error)
+			console.log(error)
+		else{
+			console.log(result);
+			var prod_id=result[0].product_id;
+			console.log("ID do produto: ",prod_id)
+
+			var invoice={
+        'company_id': '0',
+        'date': '2027-12-24',
+        'expiration_date': '2027-12-25T00:00:00+0000',
+        'document_set_id': '504207',
+        'customer_id': `${idCliente}`,
+        'our_reference': "",
+        'your_reference': "",
+        'financial_discount': '10',
+        'salesman_id': '0',
+        'salesman_commision': '0',
+        'deduction_id':'0',
+        'special_discount': '0',
+        'associated_documents[0][associated_id]':'0',
+        'associated_documents[0][value]':'0',
+        'related_documents_notes':'',
+        'products[0][product_id]': `${result[0].product_id}`,
+        'products[0][name]': `${nome_evt}`,
+        'products[0][summary]': '',
+        'products[0][qty]': '1',
+        'products[0][price]': `${result[0].price}`,
+        'products[0][unit_id]': '1882336',
+        'products[0][discount]': '0',
+        'products[0][order]': '1',
+        'products[0][exemption_reason]':'M01',
+        'products[0][warehouse_id]': '0',
+        'products[0][taxes][0][tax_id]': '2405778',
+        'products[0][taxes][0][value]': '23',
+        'products[0][taxes][0][order]': '1',
+        'products[0][taxes][0][cumulative]': '0',
+        'payments[0][payment_method_id]':'1476187',
+        'payments[0][date]':'',
+        'payments[0][value]':'15',
+        'payments[0][notes]':'',
+        'delivery_method_id': '1512402',
+        'delivery_datetime': '2027-12-25',
+        'delivery_departure_address': '4700-001',
+        'delivery_departure_city': 'Braga',
+        'delivery_departure_zip_code': '0',
+        'delivery_departure_country': '1',
+        'delivery_destination_address': '4200-440',
+        'delivery_destination_city': 'Lisboa',
+        'delivery_destination_zip_code': '1000-100',
+        'delivery_destination_country': '1',
+        'vehicle_id':'0',
+        'notes': 'Notas',
+        'status': '1'
+     };
+
+		app.moloni.invoices('insert',invoice,function(error,result){
+		console.log("Cheguei");
+        if (error)
+          return console.error(error);
+      	
+      	//console.log("ID: ",idEvento)
+		console.log(result);
+		  //LINK DA FACTURA
+		  app.moloni.documents('getPDFLink',{"document_id":result.document_id},function(error,result){
+  if (error)
+    return console.error(error);
+
+  //console.log(result.url);  //LINK DA FACTURA
+  res.redirect(result.url);
+});
+      });
+		}
+	})
+
+    console.log("UPDATE: ",result);
+  })
+}else{
 	app.moloni.customers('insert',costumer, function (error, result) {
 		if (error)
 			return console.error(error);
@@ -159,8 +251,8 @@ router.post('/cliente',function(req,res){
 
 			var invoice={
         'company_id': '0',
-        'date': '2024-12-29',
-        'expiration_date': '2024-12-29T00:00:00+0000',
+        'date': '2027-12-24',
+        'expiration_date': '2027-12-27T00:00:00+0000',
         'document_set_id': '504207',
         'customer_id': `${idCliente}`,
         'our_reference': "",
@@ -212,14 +304,23 @@ router.post('/cliente',function(req,res){
           return console.error(error);
       	
       	//console.log("ID: ",idEvento)
-		console.log(result);
+		console.log(result.document_id);
+		//GERAR LINK DO PDF
+app.moloni.documents('getPDFLink',{"document_id":result.document_id},function(error,result){
+  if (error)
+    return console.error(error);
+
+  console.log(result.url);  //LINK DA FACTURA
+  res.redirect(result.url);
+});
 		  //LINK DA FACTURA
       });
 		}
 	})
-
-
 	});
+}
+
+})
 	//idCliente+=1;
 	 //var id_cliente = 0;
 });
